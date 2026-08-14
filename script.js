@@ -1,135 +1,153 @@
 /* =========================================================
    SABRI MEZAGUER — PORTFOLIO
-   Carousel + Navigation + Project interactions
+   SELECTED WORK / BRAND CAROUSEL
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
      1. BRAND DATA
+     Order: newest → oldest
+     Facteur X intentionally kept last
      ======================================================= */
 
   const brands = [
     {
-      id: "clear",
-      name: "CLEAR",
-      year: "2026 · Present",
-      logo: "assets/images/logos/clear.png",
-      image: "assets/images/projects/clear.jpg",
-      kpis: [
-        "100K+ followers",
-        "#1 worldwide ranking",
-        "Millions of impressions"
-      ],
-      description:
-        "Brand management, social media strategy, digital campaigns and content activation."
-    },
-
-    {
-      id: "cheezy",
-      name: "CHEEZY",
-      year: "2025 · 3 months",
-      logo: "assets/images/logos/cheezy.png",
-      image: "assets/images/projects/cheezy.jpg",
-      kpis: [
-        "+120 content pieces managed",
-        "High community engagement",
-        "Strong brand loyalty & interaction"
-      ],
-      description:
-        "Social media management, content planning, community activation and brand communication."
-    },
-
-    {
       id: "signal",
       name: "SIGNAL",
       year: "2026 · Present",
-      logo: "assets/images/logos/signal.png",
-      image: "assets/images/projects/signal.jpg",
+
+      title: "Building an engaging oral-care brand presence.",
+
+      description:
+        "Managed social media communication, content direction and creator-led storytelling to build a more authentic and engaging relationship between SIGNAL and its audience.",
+
       kpis: [
-        "13.4K followers",
+        "13.4K Followers",
         "Authentic community",
         "Engaging content",
         "Positive impact"
-      ],
-      description:
-        "Brand and social media management, content strategy and creator-led storytelling."
+      ]
     },
 
     {
       id: "bionnex",
       name: "BIONNEX",
       year: "2026 · Present",
-      logo: "assets/images/logos/bionnex.png",
-      image: "assets/images/projects/bionnex.jpg",
+
+      title: "Building a coherent dermo-cosmetic brand presence.",
+
+      description:
+        "Managed content, social media direction and visual consistency to strengthen the brand image and create a more coherent digital presence.",
+
       kpis: [
-        "60+ content managed",
+        "60+ Content managed",
         "Coherent feed",
         "Engaged community",
         "Strong brand image"
-      ],
-      description:
-        "Brand management, social media strategy, content planning and digital activation."
+      ]
     },
 
     {
-      id: "ifri",
-      name: "IFRI",
-      year: "2024 · 3 months",
-      logo: "assets/images/logos/ifri.png",
-      image: "assets/images/projects/ifri.jpg",
-      kpis: [
-        "+20 influencers collaborated",
-        "+60 content managed",
-        "Millions of views generated"
-      ],
-      description:
-        "Influencer marketing, content production and digital campaign management."
-    },
+      id: "clear",
+      name: "CLEAR MEN",
+      year: "2026 · Present",
 
-    {
-      id: "lg",
-      name: "LG",
-      year: "2025 · 3 months",
-      logo: "assets/images/logos/lg.png",
-      image: "assets/images/projects/lg.jpg",
-      kpis: [
-        "100+ content managed",
-        "High engagement",
-        "15+ UGC profiles managed"
-      ],
-      description:
-        "Social media management, UGC activation, content strategy and creator coordination."
-    },
+      title: "Turning a global partnership into a digital experience.",
 
-    {
-      id: "facteur-x",
-      name: "FACTEUR X",
-      year: "Present",
-      logo: "assets/images/logos/facteur-x.png",
-      image: "assets/images/projects/facteur-x.jpg",
-      kpis: [
-        "Full brand activation",
-        "Content strategy",
-        "Digital communication"
-      ],
       description:
-        "End-to-end communication, content management and digital activation."
+        "Developed and managed digital communication around the CLEAR MEN brand, connecting campaign objectives, social content, creators and cultural moments.",
+
+      kpis: [
+        "100K+ Followers",
+        "#1 Worldwide ranking",
+        "Millions of impressions"
+      ]
     },
 
     {
       id: "festival",
       name: "FESTIVAL DES SPORTS D'ALGER",
       year: "2026",
-      logo: "assets/images/logos/festival.png",
-      image: "assets/images/projects/festival.jpg",
-      kpis: [
-        "150 content posted",
-        "3 days of full rush",
-        "Strong engagement"
-      ],
+
+      title: "Managing communication in a high-pressure environment.",
+
       description:
-        "Real-time social media management, rapid content production and event communication."
+        "",
+
+      kpis: [
+        "150 Content posted",
+        "3 days of full rush",
+        "High engagement"
+      ]
+    },
+
+    {
+      id: "cheezy",
+      name: "CHEEZY",
+      year: "2025 · 3 months",
+
+      title: "Creating social communication people interact with.",
+
+      description:
+        "",
+
+      kpis: [
+        "+120 Content pieces managed",
+        "High community engagement",
+        "Strong brand loyalty & interaction"
+      ]
+    },
+
+    {
+      id: "lg",
+      name: "LG",
+      year: "2025 · 3 months",
+
+      title: "Managing digital content and community activation.",
+
+      description:
+        "",
+
+      kpis: [
+        "100+ Content managed",
+        "High engagement",
+        "15+ UGC profiles managed"
+      ]
+    },
+
+    {
+      id: "ifri",
+      name: "IFRI",
+      year: "2024 · 3 months",
+
+      title: "Building reach through creator-led communication.",
+
+      description:
+        "",
+
+      kpis: [
+        "+20 Influencers collaborated",
+        "+60 Content managed",
+        "Millions of views generated"
+      ]
+    },
+
+    {
+      id: "facteur-x",
+      name: "FACTEUR X",
+      year: "Present",
+
+      title: "Brand communication, content and digital activation.",
+
+      description:
+        "",
+
+      kpis: [
+        "End-to-end brand management",
+        "Content strategy",
+        "Digital activation"
+      ]
     }
   ];
 
@@ -139,67 +157,83 @@ document.addEventListener("DOMContentLoaded", () => {
      ======================================================= */
 
   const track = document.getElementById("carTrack");
-  const viewport = document.getElementById("carViewport");
+  const dotsContainer = document.getElementById("carDots");
   const prevButton = document.getElementById("carPrev");
   const nextButton = document.getElementById("carNext");
-  const dotsContainer = document.getElementById("carDots");
+  const viewport = document.getElementById("carViewport");
   const projectsContainer = document.getElementById("projects");
 
-
-  if (!track) {
-    console.warn("Carousel track #carTrack not found.");
+  if (!track || !dotsContainer || !prevButton || !nextButton) {
+    console.error("Carousel elements are missing from the HTML.");
     return;
   }
 
 
   /* =======================================================
-     3. CREATE CAROUSEL
+     3. STATE
      ======================================================= */
 
-  brands.forEach((brand, index) => {
+  let currentIndex = 0;
 
-    const li = document.createElement("li");
 
-    li.className = "brand-card";
+  /* =======================================================
+     4. BUILD CAROUSEL
+     ======================================================= */
 
-    li.dataset.brand = brand.id;
+  function createCarousel() {
 
-    li.innerHTML = `
-      <button
-        class="brand-card-inner"
-        type="button"
-        aria-label="View ${brand.name} project"
-      >
+    track.innerHTML = "";
 
-        <div class="brand-card-image">
+    brands.forEach((brand, index) => {
 
-          ${
-            brand.logo
-              ? `<img
-                  src="${brand.logo}"
-                  alt="${brand.name} logo"
-                  class="brand-logo"
-                  loading="lazy"
-                >`
-              : `<span class="brand-name-fallback">${brand.name}</span>`
-          }
+      const item = document.createElement("li");
 
-          <div class="brand-hover">
+      item.className = "car-item";
 
-            <span class="brand-hover-label">
-              KEY RESULTS
+      item.dataset.index = index;
+      item.dataset.brand = brand.id;
+
+      item.setAttribute("role", "group");
+      item.setAttribute(
+        "aria-label",
+        `${index + 1} of ${brands.length}: ${brand.name}`
+      );
+
+      item.innerHTML = `
+        <button
+          class="brand-card"
+          type="button"
+          data-brand-index="${index}"
+          aria-label="View ${brand.name} project"
+        >
+
+          <div class="brand-card-top">
+
+            <span class="brand-number">
+              ${String(index + 1).padStart(2, "0")}
             </span>
+
+            <span class="brand-period">
+              ${brand.year}
+            </span>
+
+          </div>
+
+          <div class="brand-card-center">
+
+            <h3>${brand.name}</h3>
+
+          </div>
+
+          <div class="brand-card-bottom">
 
             <div class="brand-kpis">
 
               ${brand.kpis
-                .map(
-                  (kpi) => `
-                    <span class="brand-kpi">
-                      ${kpi}
-                    </span>
-                  `
-                )
+                .slice(0, 3)
+                .map((kpi) => `
+                  <span>${kpi}</span>
+                `)
                 .join("")}
 
             </div>
@@ -210,365 +244,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
           </div>
 
-        </div>
-
-        <div class="brand-card-info">
-
-          <div>
-            <h3>${brand.name}</h3>
-            <span>${brand.year}</span>
-          </div>
-
-          <span class="brand-arrow">↗</span>
-
-        </div>
-
-      </button>
-    `;
-
-    track.appendChild(li);
-  });
-
-
-  /* =======================================================
-     4. CREATE PROJECT SECTIONS
-     ======================================================= */
-
-  if (projectsContainer) {
-
-    projectsContainer.innerHTML = "";
-
-    brands.forEach((brand, index) => {
-
-      const project = document.createElement("section");
-
-      project.className = "project-block";
-
-      project.id = `project-${brand.id}`;
-
-      project.innerHTML = `
-
-        <div class="wrap">
-
-          <div class="project-number">
-            ${String(index + 1).padStart(2, "0")}
-          </div>
-
-          <div class="project-grid">
-
-            <div class="project-media">
-
-              ${
-                brand.image
-                  ? `
-                    <img
-                      src="${brand.image}"
-                      alt="${brand.name} project"
-                      loading="lazy"
-                    >
-                  `
-                  : `
-                    <div class="project-placeholder">
-                      ${brand.name}
-                    </div>
-                  `
-              }
-
-            </div>
-
-            <div class="project-content">
-
-              <span class="project-label">
-                ${brand.year}
-              </span>
-
-              <h2 class="display">
-                ${brand.name}
-              </h2>
-
-              <p>
-                ${brand.description}
-              </p>
-
-              <div class="project-results">
-
-                ${brand.kpis
-                  .map(
-                    (kpi) => `
-                      <div class="result">
-                        <span>—</span>
-                        <strong>${kpi}</strong>
-                      </div>
-                    `
-                  )
-                  .join("")}
-
-              </div>
-
-              <button
-                class="back-to-work"
-                type="button"
-              >
-                ↑ Back to selected work
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
+        </button>
       `;
 
-      projectsContainer.appendChild(project);
+      track.appendChild(item);
     });
-  }
 
 
-  /* =======================================================
-     5. CARD CLICK → PROJECT
-     ======================================================= */
+    /* Click on a brand */
 
-  const brandCards = document.querySelectorAll(".brand-card");
+    document.querySelectorAll(".brand-card").forEach((card) => {
 
-  brandCards.forEach((card) => {
+      card.addEventListener("click", () => {
 
-    const button = card.querySelector(".brand-card-inner");
+        const index = Number(card.dataset.brandIndex);
 
-    button.addEventListener("click", () => {
+        currentIndex = index;
 
-      const brandId = card.dataset.brand;
+        updateCarousel();
 
-      const project = document.getElementById(
-        `project-${brandId}`
-      );
+        const target = document.getElementById(
+          `project-${brands[index].id}`
+        );
 
-      if (!project) return;
+        if (target) {
 
-      project.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+          setTimeout(() => {
+
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }, 150);
+
+        }
+
       });
 
-      history.replaceState(
-        null,
-        "",
-        `#project-${brandId}`
-      );
-
     });
-
-  });
-
-
-  /* =======================================================
-     6. BACK TO WORK BUTTON
-     ======================================================= */
-
-  document.querySelectorAll(".back-to-work").forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const workSection = document.getElementById("work");
-
-      if (!workSection) return;
-
-      workSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-      history.replaceState(
-        null,
-        "",
-        "#work"
-      );
-
-    });
-
-  });
-
-
-  /* =======================================================
-     7. CAROUSEL
-     ======================================================= */
-
-  let currentIndex = 0;
-
-  const getCardsPerView = () => {
-
-    const width = window.innerWidth;
-
-    if (width < 600) return 1;
-
-    if (width < 900) return 2;
-
-    if (width < 1200) return 3;
-
-    return 4;
-
-  };
-
-
-  const getMaxIndex = () => {
-
-    const visible = getCardsPerView();
-
-    return Math.max(
-      0,
-      brands.length - visible
-    );
-
-  };
-
-
-  const updateCarousel = (animate = true) => {
-
-    const visible = getCardsPerView();
-
-    const maxIndex = getMaxIndex();
-
-    currentIndex = Math.min(
-      Math.max(currentIndex, 0),
-      maxIndex
-    );
-
-    const cardWidth =
-      100 / visible;
-
-    track.style.transition =
-      animate
-        ? "transform 0.55s cubic-bezier(.22,.61,.36,1)"
-        : "none";
-
-    track.style.transform =
-      `translateX(-${currentIndex * cardWidth}%)`;
-
-    updateButtons();
-
-    updateDots();
-
-  };
-
-
-  /* =======================================================
-     8. NEXT / PREVIOUS
-     ======================================================= */
-
-  const next = () => {
-
-    const maxIndex = getMaxIndex();
-
-    if (currentIndex < maxIndex) {
-
-      currentIndex++;
-
-    } else {
-
-      currentIndex = 0;
-
-    }
-
-    updateCarousel();
-
-  };
-
-
-  const previous = () => {
-
-    const maxIndex = getMaxIndex();
-
-    if (currentIndex > 0) {
-
-      currentIndex--;
-
-    } else {
-
-      currentIndex = maxIndex;
-
-    }
-
-    updateCarousel();
-
-  };
-
-
-  if (nextButton) {
-
-    nextButton.addEventListener(
-      "click",
-      next
-    );
-
-  }
-
-
-  if (prevButton) {
-
-    prevButton.addEventListener(
-      "click",
-      previous
-    );
 
   }
 
 
   /* =======================================================
-     9. BUTTON STATE
+     5. BUILD DOTS
      ======================================================= */
 
-  const updateButtons = () => {
-
-    if (!prevButton || !nextButton) return;
-
-    const maxIndex = getMaxIndex();
-
-    if (brands.length <= getCardsPerView()) {
-
-      prevButton.disabled = true;
-      nextButton.disabled = true;
-
-      return;
-    }
-
-    prevButton.disabled = false;
-    nextButton.disabled = false;
-
-  };
-
-
-  /* =======================================================
-     10. DOTS
-     ======================================================= */
-
-  const updateDots = () => {
-
-    if (!dotsContainer) return;
+  function createDots() {
 
     dotsContainer.innerHTML = "";
 
-    const maxIndex = getMaxIndex();
-
-    if (maxIndex <= 0) return;
-
-    for (let i = 0; i <= maxIndex; i++) {
+    brands.forEach((brand, index) => {
 
       const dot = document.createElement("button");
 
       dot.type = "button";
 
-      dot.className =
-        i === currentIndex
-          ? "car-dot active"
-          : "car-dot";
+      dot.className = "car-dot";
+
+      dot.dataset.index = index;
 
       dot.setAttribute(
         "aria-label",
-        `Go to carousel position ${i + 1}`
+        `Show ${brand.name}`
       );
 
       dot.addEventListener("click", () => {
 
-        currentIndex = i;
+        currentIndex = index;
 
         updateCarousel();
 
@@ -576,45 +320,144 @@ document.addEventListener("DOMContentLoaded", () => {
 
       dotsContainer.appendChild(dot);
 
-    }
+    });
 
-  };
+  }
 
 
   /* =======================================================
-     11. KEYBOARD CONTROL
+     6. UPDATE CAROUSEL
      ======================================================= */
 
-  if (viewport) {
+  function updateCarousel() {
 
-    viewport.addEventListener(
-      "keydown",
-      (event) => {
+    /*
+      Each slide occupies 100% of the viewport.
+      Only one brand is visible at a time.
+    */
 
-        if (event.key === "ArrowRight") {
+    track.style.transform =
+      `translate3d(-${currentIndex * 100}%, 0, 0)`;
 
-          event.preventDefault();
 
-          next();
+    /* Active slide */
 
-        }
+    document
+      .querySelectorAll(".car-item")
+      .forEach((item, index) => {
 
-        if (event.key === "ArrowLeft") {
+        item.classList.toggle(
+          "is-active",
+          index === currentIndex
+        );
 
-          event.preventDefault();
+      });
 
-          previous();
 
-        }
+    /* Active dot */
 
-      }
+    document
+      .querySelectorAll(".car-dot")
+      .forEach((dot, index) => {
+
+        dot.classList.toggle(
+          "is-active",
+          index === currentIndex
+        );
+
+      });
+
+
+    /* Navigation */
+
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+
+
+    /*
+      Keep the carousel infinite.
+      This feels more natural for a portfolio.
+    */
+
+    prevButton.setAttribute(
+      "aria-label",
+      `Previous brand`
+    );
+
+    nextButton.setAttribute(
+      "aria-label",
+      `Next brand`
     );
 
   }
 
 
   /* =======================================================
-     12. TOUCH / SWIPE
+     7. NEXT / PREVIOUS
+     ======================================================= */
+
+  function nextSlide() {
+
+    currentIndex++;
+
+    if (currentIndex >= brands.length) {
+      currentIndex = 0;
+    }
+
+    updateCarousel();
+
+  }
+
+
+  function previousSlide() {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+      currentIndex = brands.length - 1;
+    }
+
+    updateCarousel();
+
+  }
+
+
+  nextButton.addEventListener("click", nextSlide);
+
+  prevButton.addEventListener("click", previousSlide);
+
+
+  /* =======================================================
+     8. KEYBOARD CONTROL
+     ======================================================= */
+
+  if (viewport) {
+
+    viewport.addEventListener("keydown", (event) => {
+
+      if (event.key === "ArrowRight") {
+
+        event.preventDefault();
+
+        nextSlide();
+
+      }
+
+      if (event.key === "ArrowLeft") {
+
+        event.preventDefault();
+
+        previousSlide();
+
+      }
+
+    });
+
+  }
+
+
+  /* =======================================================
+     9. TOUCH / SWIPE
      ======================================================= */
 
   let touchStartX = 0;
@@ -641,20 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
         touchEndX =
           event.changedTouches[0].screenX;
 
-        const distance =
-          touchStartX - touchEndX;
-
-        if (Math.abs(distance) < 50) return;
-
-        if (distance > 0) {
-
-          next();
-
-        } else {
-
-          previous();
-
-        }
+        handleSwipe();
 
       },
       { passive: true }
@@ -663,35 +493,207 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* =======================================================
-     13. RESPONSIVE RESIZE
-     ======================================================= */
+  function handleSwipe() {
 
-  let resizeTimer;
+    const distance =
+      touchStartX - touchEndX;
 
-  window.addEventListener(
-    "resize",
-    () => {
+    /*
+      Ignore very small movements.
+    */
 
-      clearTimeout(resizeTimer);
+    if (Math.abs(distance) < 50) {
+      return;
+    }
 
-      resizeTimer = setTimeout(() => {
+    if (distance > 0) {
 
-        currentIndex = Math.min(
-          currentIndex,
-          getMaxIndex()
-        );
+      nextSlide();
 
-        updateCarousel(false);
+    } else {
 
-      }, 150);
+      previousSlide();
 
     }
-  );
+
+  }
 
 
   /* =======================================================
-     14. MOBILE MENU
+     10. BUILD PROJECT DETAIL SECTIONS
+     ======================================================= */
+
+  function createProjectSections() {
+
+    if (!projectsContainer) {
+      return;
+    }
+
+    projectsContainer.innerHTML = "";
+
+
+    brands.forEach((brand, index) => {
+
+      const section =
+        document.createElement("section");
+
+      section.className = "project-detail";
+
+      section.id =
+        `project-${brand.id}`;
+
+
+      /*
+        Keep the same visual hierarchy for every brand.
+      */
+
+      section.innerHTML = `
+
+        <div class="wrap">
+
+          <div class="project-detail-head">
+
+            <div class="project-meta">
+
+              <span class="project-index">
+                ${String(index + 1).padStart(2, "0")}
+              </span>
+
+              <span class="project-brand">
+                ${brand.name}
+              </span>
+
+            </div>
+
+            <span class="project-period">
+              ${brand.year}
+            </span>
+
+          </div>
+
+
+          <div class="project-detail-content">
+
+            <h2 class="display">
+              ${brand.title}
+            </h2>
+
+            ${
+              brand.description
+                ? `<p class="project-description">
+                    ${brand.description}
+                  </p>`
+                : ""
+            }
+
+          </div>
+
+
+          <div class="project-kpi-grid">
+
+            ${brand.kpis
+              .map((kpi) => {
+
+                /*
+                  Split the KPI into a highlighted first part
+                  when possible.
+                */
+
+                const parts =
+                  kpi.match(
+                    /^(\+?\#?\d[\d.K+]*|HIGH|AUTHENTIC|STRONG|Millions|End-to-end)(.*)$/i
+                  );
+
+                if (parts) {
+
+                  return `
+                    <div class="project-kpi">
+                      <strong>${parts[1]}</strong>
+                      <span>${parts[2]}</span>
+                    </div>
+                  `;
+
+                }
+
+                return `
+                  <div class="project-kpi">
+                    <strong>${kpi}</strong>
+                  </div>
+                `;
+
+              })
+              .join("")}
+
+          </div>
+
+
+          <div class="project-detail-footer">
+
+            <span>
+              ${brand.name}
+            </span>
+
+            <button
+              type="button"
+              class="back-to-work"
+              data-back-to-work
+            >
+              Back to selected work ↑
+            </button>
+
+          </div>
+
+        </div>
+      `;
+
+
+      projectsContainer.appendChild(section);
+
+    });
+
+
+    /* Back to carousel buttons */
+
+    document
+      .querySelectorAll("[data-back-to-work]")
+      .forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+          const workSection =
+            document.getElementById("work");
+
+          if (workSection) {
+
+            workSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+
+        });
+
+      });
+
+  }
+
+
+  /* =======================================================
+     11. INITIALIZE
+     ======================================================= */
+
+  createCarousel();
+
+  createDots();
+
+  createProjectSections();
+
+  updateCarousel();
+
+
+  /* =======================================================
+     12. MOBILE MENU
      ======================================================= */
 
   const burger =
@@ -702,46 +704,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (burger && nav) {
 
-    burger.addEventListener(
-      "click",
-      () => {
+    burger.addEventListener("click", () => {
 
-        const isOpen =
-          burger.getAttribute(
-            "aria-expanded"
-          ) === "true";
+      const isOpen =
+        burger.getAttribute("aria-expanded") === "true";
 
-        burger.setAttribute(
-          "aria-expanded",
-          String(!isOpen)
-        );
+      burger.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
 
-        nav.classList.toggle(
-          "is-open",
-          !isOpen
-        );
+      nav.classList.toggle(
+        "is-open",
+        !isOpen
+      );
 
-      }
-    );
+    });
 
+
+    /* Close menu after clicking a link */
 
     nav.querySelectorAll("a").forEach((link) => {
 
-      link.addEventListener(
-        "click",
-        () => {
+      link.addEventListener("click", () => {
 
-          burger.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+        burger.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-          nav.classList.remove(
-            "is-open"
-          );
+        nav.classList.remove(
+          "is-open"
+        );
 
-        }
-      );
+      });
 
     });
 
@@ -749,53 +745,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     15. SMOOTH ANCHOR LINKS
+     13. ESC KEY
      ======================================================= */
 
-  document
-    .querySelectorAll('a[href^="#"]')
-    .forEach((link) => {
+  document.addEventListener("keydown", (event) => {
 
-      link.addEventListener(
-        "click",
-        (event) => {
+    if (event.key === "Escape") {
 
-          const targetId =
-            link.getAttribute("href");
+      if (burger && nav) {
 
-          if (
-            !targetId ||
-            targetId === "#"
-          ) return;
+        burger.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-          const target =
-            document.querySelector(targetId);
+        nav.classList.remove(
+          "is-open"
+        );
 
-          if (!target) return;
+      }
 
-          event.preventDefault();
+    }
 
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-          history.replaceState(
-            null,
-            "",
-            targetId
-          );
-
-        }
-      );
-
-    });
-
-
-  /* =======================================================
-     16. INITIALIZE
-     ======================================================= */
-
-  updateCarousel(false);
+  });
 
 });
