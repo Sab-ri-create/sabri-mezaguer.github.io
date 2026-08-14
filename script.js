@@ -1,48 +1,51 @@
 /* =========================================================
    SABRI MEZAGUER — PORTFOLIO
-   MAIN JAVASCRIPT
+   Carousel + Navigation + Project interactions
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =======================================================
-     DATA — BRANDS
+     1. BRAND DATA
      ======================================================= */
 
   const brands = [
     {
       id: "clear",
       name: "CLEAR",
-      year: "2026",
-      duration: "Present",
+      year: "2026 · Present",
+      logo: "assets/images/logos/clear.png",
+      image: "assets/images/projects/clear.jpg",
       kpis: [
         "100K+ followers",
         "#1 worldwide ranking",
         "Millions of impressions"
       ],
       description:
-        "Brand and digital work focused on social media, content strategy and campaign execution."
+        "Brand management, social media strategy, digital campaigns and content activation."
     },
 
     {
       id: "cheezy",
       name: "CHEEZY",
-      year: "2025",
-      duration: "3 months",
+      year: "2025 · 3 months",
+      logo: "assets/images/logos/cheezy.png",
+      image: "assets/images/projects/cheezy.jpg",
       kpis: [
         "+120 content pieces managed",
         "High community engagement",
         "Strong brand loyalty & interaction"
       ],
       description:
-        "Social media and content management focused on creating an active community and strengthening brand interaction."
+        "Social media management, content planning, community activation and brand communication."
     },
 
     {
       id: "signal",
       name: "SIGNAL",
-      year: "2026",
-      duration: "Present",
+      year: "2026 · Present",
+      logo: "assets/images/logos/signal.png",
+      image: "assets/images/projects/signal.jpg",
       kpis: [
         "13.4K followers",
         "Authentic community",
@@ -50,14 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "Positive impact"
       ],
       description:
-        "Brand management, social media strategy and content activation designed around everyday oral care and engaging storytelling."
+        "Brand and social media management, content strategy and creator-led storytelling."
     },
 
     {
       id: "bionnex",
       name: "BIONNEX",
-      year: "2026",
-      duration: "Present",
+      year: "2026 · Present",
+      logo: "assets/images/logos/bionnex.png",
+      image: "assets/images/projects/bionnex.jpg",
       kpis: [
         "60+ content managed",
         "Coherent feed",
@@ -65,69 +69,73 @@ document.addEventListener("DOMContentLoaded", () => {
         "Strong brand image"
       ],
       description:
-        "Brand and social media management for a dermo-cosmetic portfolio, combining content strategy, visual consistency and digital activation."
+        "Brand management, social media strategy, content planning and digital activation."
     },
 
     {
       id: "ifri",
       name: "IFRI",
-      year: "2024",
-      duration: "3 months",
+      year: "2024 · 3 months",
+      logo: "assets/images/logos/ifri.png",
+      image: "assets/images/projects/ifri.jpg",
       kpis: [
         "+20 influencers collaborated",
         "+60 content managed",
         "Millions of views generated"
       ],
       description:
-        "Influencer marketing and social content activation focused on reach, creator partnerships and audience engagement."
+        "Influencer marketing, content production and digital campaign management."
     },
 
     {
       id: "lg",
       name: "LG",
-      year: "2025",
-      duration: "3 months",
+      year: "2025 · 3 months",
+      logo: "assets/images/logos/lg.png",
+      image: "assets/images/projects/lg.jpg",
       kpis: [
         "100+ content managed",
         "High engagement",
         "15+ UGC profiles managed"
       ],
       description:
-        "Social media and UGC management supporting digital communication and community-driven content."
+        "Social media management, UGC activation, content strategy and creator coordination."
     },
 
     {
       id: "facteur-x",
       name: "FACTEUR X",
-      year: "2026",
-      duration: "Present",
+      year: "Present",
+      logo: "assets/images/logos/facteur-x.png",
+      image: "assets/images/projects/facteur-x.jpg",
       kpis: [
-        "Integrated digital communication",
+        "Full brand activation",
         "Content strategy",
-        "Social media activation"
+        "Digital communication"
       ],
       description:
-        "End-to-end communication work covering strategy, content, social media and digital activation."
+        "End-to-end communication, content management and digital activation."
     },
 
     {
       id: "festival",
       name: "FESTIVAL DES SPORTS D'ALGER",
       year: "2026",
-      duration: "Event",
+      logo: "assets/images/logos/festival.png",
+      image: "assets/images/projects/festival.jpg",
       kpis: [
-        "150 content pieces",
+        "150 content posted",
         "3 days of full rush",
         "Strong engagement"
       ],
       description:
-        "High-intensity event communication delivered across three days, from content production to real-time social media publishing."
+        "Real-time social media management, rapid content production and event communication."
     }
   ];
 
 
   /* =======================================================
-     CAROUSEL ELEMENTS
+     2. ELEMENTS
      ======================================================= */
 
   const track = document.getElementById("carTrack");
@@ -135,58 +143,87 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevButton = document.getElementById("carPrev");
   const nextButton = document.getElementById("carNext");
   const dotsContainer = document.getElementById("carDots");
+  const projectsContainer = document.getElementById("projects");
 
-  if (!track || !viewport) {
-    console.warn("Carousel elements not found.");
+
+  if (!track) {
+    console.warn("Carousel track #carTrack not found.");
     return;
   }
 
 
   /* =======================================================
-     CREATE BRAND CARDS
+     3. CREATE CAROUSEL
      ======================================================= */
-
-  track.innerHTML = "";
 
   brands.forEach((brand, index) => {
 
     const li = document.createElement("li");
 
     li.className = "brand-card";
+
     li.dataset.brand = brand.id;
-    li.dataset.index = index;
 
     li.innerHTML = `
-      <div class="brand-card-inner">
+      <button
+        class="brand-card-inner"
+        type="button"
+        aria-label="View ${brand.name} project"
+      >
 
-        <div class="brand-placeholder">
-          <span>${brand.name}</span>
+        <div class="brand-card-image">
+
+          ${
+            brand.logo
+              ? `<img
+                  src="${brand.logo}"
+                  alt="${brand.name} logo"
+                  class="brand-logo"
+                  loading="lazy"
+                >`
+              : `<span class="brand-name-fallback">${brand.name}</span>`
+          }
+
+          <div class="brand-hover">
+
+            <span class="brand-hover-label">
+              KEY RESULTS
+            </span>
+
+            <div class="brand-kpis">
+
+              ${brand.kpis
+                .map(
+                  (kpi) => `
+                    <span class="brand-kpi">
+                      ${kpi}
+                    </span>
+                  `
+                )
+                .join("")}
+
+            </div>
+
+            <span class="brand-view">
+              View project ↗
+            </span>
+
+          </div>
+
         </div>
 
-        <div class="brand-name">
-          ${brand.name}
-        </div>
+        <div class="brand-card-info">
 
-        <div class="brand-meta">
-          <span>${brand.year}</span>
-          <span>${brand.duration}</span>
-        </div>
+          <div>
+            <h3>${brand.name}</h3>
+            <span>${brand.year}</span>
+          </div>
 
-        <div class="brand-kpis">
-
-          <h3>${brand.name}</h3>
-
-          ${brand.kpis
-            .map(kpi => `<p>${kpi}</p>`)
-            .join("")}
-
-          <span class="view-project">
-            View project ↗
-          </span>
+          <span class="brand-arrow">↗</span>
 
         </div>
 
-      </div>
+      </button>
     `;
 
     track.appendChild(li);
@@ -194,307 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     DOTS
+     4. CREATE PROJECT SECTIONS
      ======================================================= */
-
-  dotsContainer.innerHTML = "";
-
-  brands.forEach((brand, index) => {
-
-    const dot = document.createElement("button");
-
-    dot.type = "button";
-    dot.setAttribute("aria-label", `Go to ${brand.name}`);
-
-    if (index === 0) {
-      dot.classList.add("active");
-    }
-
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-    });
-
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = [...dotsContainer.querySelectorAll("button")];
-
-
-  /* =======================================================
-     CAROUSEL STATE
-     ======================================================= */
-
-  let currentIndex = 0;
-
-  /*
-     Desktop:
-     3 cards visible
-
-     Tablet:
-     approximately 2 cards
-
-     Mobile:
-     1 card
-  */
-
-  function getVisibleCards() {
-
-    const width = window.innerWidth;
-
-    if (width <= 720) {
-      return 1;
-    }
-
-    if (width <= 1100) {
-      return 2;
-    }
-
-    return 3;
-  }
-
-
-  function getMaxIndex() {
-    return Math.max(0, brands.length - getVisibleCards());
-  }
-
-
-  /* =======================================================
-     CALCULATE CAROUSEL POSITION
-     ======================================================= */
-
-  function getCardStep() {
-
-    const card = track.querySelector(".brand-card");
-
-    if (!card) return 0;
-
-    const style = window.getComputedStyle(track);
-
-    const gap = parseFloat(style.columnGap || style.gap || 0);
-
-    return card.offsetWidth + gap;
-  }
-
-
-  function updateCarousel(animate = true) {
-
-    const step = getCardStep();
-
-    if (!step) return;
-
-    if (!animate) {
-      track.style.transition = "none";
-    } else {
-      track.style.transition =
-        "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
-    }
-
-    track.style.transform =
-      `translate3d(-${currentIndex * step}px, 0, 0)`;
-
-
-    /* Update dots */
-
-    dots.forEach((dot, index) => {
-      dot.classList.toggle(
-        "active",
-        index === currentIndex
-      );
-    });
-
-
-    /* Update buttons */
-
-    if (prevButton) {
-      prevButton.disabled = currentIndex === 0;
-      prevButton.style.opacity =
-        currentIndex === 0 ? "0.35" : "1";
-    }
-
-    if (nextButton) {
-      nextButton.disabled =
-        currentIndex >= getMaxIndex();
-
-      nextButton.style.opacity =
-        currentIndex >= getMaxIndex()
-          ? "0.35"
-          : "1";
-    }
-  }
-
-
-  /* =======================================================
-     GO TO SLIDE
-     ======================================================= */
-
-  function goToSlide(index) {
-
-    const maxIndex = getMaxIndex();
-
-    currentIndex = Math.max(
-      0,
-      Math.min(index, maxIndex)
-    );
-
-    updateCarousel(true);
-  }
-
-
-  /* =======================================================
-     PREVIOUS / NEXT
-     ======================================================= */
-
-  if (prevButton) {
-
-    prevButton.addEventListener("click", () => {
-      goToSlide(currentIndex - 1);
-    });
-
-  }
-
-
-  if (nextButton) {
-
-    nextButton.addEventListener("click", () => {
-      goToSlide(currentIndex + 1);
-    });
-
-  }
-
-
-  /* =======================================================
-     KEYBOARD NAVIGATION
-     ======================================================= */
-
-  viewport.addEventListener("keydown", event => {
-
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      goToSlide(currentIndex + 1);
-    }
-
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      goToSlide(currentIndex - 1);
-    }
-
-  });
-
-
-  /* =======================================================
-     TOUCH / SWIPE
-     ======================================================= */
-
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  viewport.addEventListener(
-    "touchstart",
-    event => {
-
-      touchStartX =
-        event.changedTouches[0].screenX;
-
-    },
-    { passive: true }
-  );
-
-
-  viewport.addEventListener(
-    "touchend",
-    event => {
-
-      touchEndX =
-        event.changedTouches[0].screenX;
-
-      const difference =
-        touchStartX - touchEndX;
-
-      const threshold = 50;
-
-      if (Math.abs(difference) < threshold) {
-        return;
-      }
-
-      if (difference > 0) {
-        goToSlide(currentIndex + 1);
-      } else {
-        goToSlide(currentIndex - 1);
-      }
-
-    },
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     MOUSE WHEEL
-     ======================================================= */
-
-  let wheelLocked = false;
-
-  viewport.addEventListener(
-    "wheel",
-    event => {
-
-      if (Math.abs(event.deltaX) < Math.abs(event.deltaY)) {
-        return;
-      }
-
-      if (wheelLocked) return;
-
-      wheelLocked = true;
-
-      if (event.deltaX > 0) {
-        goToSlide(currentIndex + 1);
-      } else {
-        goToSlide(currentIndex - 1);
-      }
-
-      setTimeout(() => {
-        wheelLocked = false;
-      }, 500);
-
-    },
-    { passive: true }
-  );
-
-
-  /* =======================================================
-     BRAND CLICK → PROJECT
-     ======================================================= */
-
-  track.addEventListener("click", event => {
-
-    const card =
-      event.target.closest(".brand-card");
-
-    if (!card) return;
-
-    const brandId =
-      card.dataset.brand;
-
-    const project =
-      document.getElementById(
-        `project-${brandId}`
-      );
-
-    if (!project) return;
-
-    project.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  });
-
-
-  /* =======================================================
-     CREATE PROJECT SECTIONS
-     ======================================================= */
-
-  const projectsContainer =
-    document.getElementById("projects");
 
   if (projectsContainer) {
 
@@ -502,95 +240,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     brands.forEach((brand, index) => {
 
-      const project =
-        document.createElement("section");
+      const project = document.createElement("section");
 
-      project.className =
-        "project-detail brand-project";
+      project.className = "project-block";
 
-      project.id =
-        `project-${brand.id}`;
+      project.id = `project-${brand.id}`;
 
       project.innerHTML = `
 
-        <div class="project-detail-inner">
+        <div class="wrap">
 
-          <div class="project-header">
+          <div class="project-number">
+            ${String(index + 1).padStart(2, "0")}
+          </div>
 
-            <div>
+          <div class="project-grid">
 
-              <div class="sec-tag">
+            <div class="project-media">
 
-                <span class="num">
-                  ${String(index + 1).padStart(2, "0")}
-                </span>
+              ${
+                brand.image
+                  ? `
+                    <img
+                      src="${brand.image}"
+                      alt="${brand.name} project"
+                      loading="lazy"
+                    >
+                  `
+                  : `
+                    <div class="project-placeholder">
+                      ${brand.name}
+                    </div>
+                  `
+              }
 
-                <span class="dash"></span>
+            </div>
 
-                <span class="label">
-                  ${brand.name}
-                </span>
+            <div class="project-content">
 
-              </div>
+              <span class="project-label">
+                ${brand.year}
+              </span>
 
-              <h2 class="project-title">
+              <h2 class="display">
                 ${brand.name}
               </h2>
 
-            </div>
-
-
-            <div class="project-meta">
-
-              <strong>
-                Collaboration
-              </strong>
-
-              <span>
-                ${brand.year} · ${brand.duration}
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="project-image">
-
-            <div class="project-placeholder">
-
-              <span>
-                ${brand.name}
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <div class="project-info">
-
-            <div>
-
-              <p class="project-description">
+              <p>
                 ${brand.description}
               </p>
 
-            </div>
+              <div class="project-results">
 
+                ${brand.kpis
+                  .map(
+                    (kpi) => `
+                      <div class="result">
+                        <span>—</span>
+                        <strong>${kpi}</strong>
+                      </div>
+                    `
+                  )
+                  .join("")}
 
-            <div class="project-kpis">
+              </div>
 
-              ${brand.kpis
-                .map(kpi => `
-                  <div class="project-kpi">
-                    <strong>${kpi.split(" ")[0]}</strong>
-                    <span>
-                      ${kpi.substring(kpi.indexOf(" ") + 1)}
-                    </span>
-                  </div>
-                `)
-                .join("")}
+              <button
+                class="back-to-work"
+                type="button"
+              >
+                ↑ Back to selected work
+              </button>
 
             </div>
 
@@ -600,46 +320,378 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       projectsContainer.appendChild(project);
-
     });
-
   }
 
 
   /* =======================================================
-     RESPONSIVE RESIZE
+     5. CARD CLICK → PROJECT
      ======================================================= */
 
-  let resizeTimer;
+  const brandCards = document.querySelectorAll(".brand-card");
 
-  window.addEventListener("resize", () => {
+  brandCards.forEach((card) => {
 
-    clearTimeout(resizeTimer);
+    const button = card.querySelector(".brand-card-inner");
 
-    resizeTimer = setTimeout(() => {
+    button.addEventListener("click", () => {
 
-      currentIndex =
-        Math.min(
-          currentIndex,
-          getMaxIndex()
-        );
+      const brandId = card.dataset.brand;
 
-      updateCarousel(false);
+      const project = document.getElementById(
+        `project-${brandId}`
+      );
 
-    }, 150);
+      if (!project) return;
+
+      project.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      history.replaceState(
+        null,
+        "",
+        `#project-${brandId}`
+      );
+
+    });
 
   });
 
 
   /* =======================================================
-     INITIALIZE
+     6. BACK TO WORK BUTTON
      ======================================================= */
 
-  updateCarousel(false);
+  document.querySelectorAll(".back-to-work").forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const workSection = document.getElementById("work");
+
+      if (!workSection) return;
+
+      workSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      history.replaceState(
+        null,
+        "",
+        "#work"
+      );
+
+    });
+
+  });
 
 
   /* =======================================================
-     MOBILE MENU
+     7. CAROUSEL
+     ======================================================= */
+
+  let currentIndex = 0;
+
+  const getCardsPerView = () => {
+
+    const width = window.innerWidth;
+
+    if (width < 600) return 1;
+
+    if (width < 900) return 2;
+
+    if (width < 1200) return 3;
+
+    return 4;
+
+  };
+
+
+  const getMaxIndex = () => {
+
+    const visible = getCardsPerView();
+
+    return Math.max(
+      0,
+      brands.length - visible
+    );
+
+  };
+
+
+  const updateCarousel = (animate = true) => {
+
+    const visible = getCardsPerView();
+
+    const maxIndex = getMaxIndex();
+
+    currentIndex = Math.min(
+      Math.max(currentIndex, 0),
+      maxIndex
+    );
+
+    const cardWidth =
+      100 / visible;
+
+    track.style.transition =
+      animate
+        ? "transform 0.55s cubic-bezier(.22,.61,.36,1)"
+        : "none";
+
+    track.style.transform =
+      `translateX(-${currentIndex * cardWidth}%)`;
+
+    updateButtons();
+
+    updateDots();
+
+  };
+
+
+  /* =======================================================
+     8. NEXT / PREVIOUS
+     ======================================================= */
+
+  const next = () => {
+
+    const maxIndex = getMaxIndex();
+
+    if (currentIndex < maxIndex) {
+
+      currentIndex++;
+
+    } else {
+
+      currentIndex = 0;
+
+    }
+
+    updateCarousel();
+
+  };
+
+
+  const previous = () => {
+
+    const maxIndex = getMaxIndex();
+
+    if (currentIndex > 0) {
+
+      currentIndex--;
+
+    } else {
+
+      currentIndex = maxIndex;
+
+    }
+
+    updateCarousel();
+
+  };
+
+
+  if (nextButton) {
+
+    nextButton.addEventListener(
+      "click",
+      next
+    );
+
+  }
+
+
+  if (prevButton) {
+
+    prevButton.addEventListener(
+      "click",
+      previous
+    );
+
+  }
+
+
+  /* =======================================================
+     9. BUTTON STATE
+     ======================================================= */
+
+  const updateButtons = () => {
+
+    if (!prevButton || !nextButton) return;
+
+    const maxIndex = getMaxIndex();
+
+    if (brands.length <= getCardsPerView()) {
+
+      prevButton.disabled = true;
+      nextButton.disabled = true;
+
+      return;
+    }
+
+    prevButton.disabled = false;
+    nextButton.disabled = false;
+
+  };
+
+
+  /* =======================================================
+     10. DOTS
+     ======================================================= */
+
+  const updateDots = () => {
+
+    if (!dotsContainer) return;
+
+    dotsContainer.innerHTML = "";
+
+    const maxIndex = getMaxIndex();
+
+    if (maxIndex <= 0) return;
+
+    for (let i = 0; i <= maxIndex; i++) {
+
+      const dot = document.createElement("button");
+
+      dot.type = "button";
+
+      dot.className =
+        i === currentIndex
+          ? "car-dot active"
+          : "car-dot";
+
+      dot.setAttribute(
+        "aria-label",
+        `Go to carousel position ${i + 1}`
+      );
+
+      dot.addEventListener("click", () => {
+
+        currentIndex = i;
+
+        updateCarousel();
+
+      });
+
+      dotsContainer.appendChild(dot);
+
+    }
+
+  };
+
+
+  /* =======================================================
+     11. KEYBOARD CONTROL
+     ======================================================= */
+
+  if (viewport) {
+
+    viewport.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key === "ArrowRight") {
+
+          event.preventDefault();
+
+          next();
+
+        }
+
+        if (event.key === "ArrowLeft") {
+
+          event.preventDefault();
+
+          previous();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     12. TOUCH / SWIPE
+     ======================================================= */
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (viewport) {
+
+    viewport.addEventListener(
+      "touchstart",
+      (event) => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      { passive: true }
+    );
+
+
+    viewport.addEventListener(
+      "touchend",
+      (event) => {
+
+        touchEndX =
+          event.changedTouches[0].screenX;
+
+        const distance =
+          touchStartX - touchEndX;
+
+        if (Math.abs(distance) < 50) return;
+
+        if (distance > 0) {
+
+          next();
+
+        } else {
+
+          previous();
+
+        }
+
+      },
+      { passive: true }
+    );
+
+  }
+
+
+  /* =======================================================
+     13. RESPONSIVE RESIZE
+     ======================================================= */
+
+  let resizeTimer;
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      clearTimeout(resizeTimer);
+
+      resizeTimer = setTimeout(() => {
+
+        currentIndex = Math.min(
+          currentIndex,
+          getMaxIndex()
+        );
+
+        updateCarousel(false);
+
+      }, 150);
+
+    }
+  );
+
+
+  /* =======================================================
+     14. MOBILE MENU
      ======================================================= */
 
   const burger =
@@ -650,31 +702,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (burger && nav) {
 
-    burger.addEventListener("click", () => {
+    burger.addEventListener(
+      "click",
+      () => {
 
-      const isOpen =
-        nav.classList.toggle("open");
-
-      burger.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-    });
-
-
-    nav.querySelectorAll("a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        nav.classList.remove("open");
+        const isOpen =
+          burger.getAttribute(
+            "aria-expanded"
+          ) === "true";
 
         burger.setAttribute(
           "aria-expanded",
-          "false"
+          String(!isOpen)
         );
 
-      });
+        nav.classList.toggle(
+          "is-open",
+          !isOpen
+        );
+
+      }
+    );
+
+
+    nav.querySelectorAll("a").forEach((link) => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          burger.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          nav.classList.remove(
+            "is-open"
+          );
+
+        }
+      );
 
     });
 
@@ -682,28 +749,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     HEADER SCROLL EFFECT
+     15. SMOOTH ANCHOR LINKS
      ======================================================= */
 
-  const header =
-    document.querySelector(".site-header");
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
 
-  if (header) {
+      link.addEventListener(
+        "click",
+        (event) => {
 
-    window.addEventListener(
-      "scroll",
-      () => {
+          const targetId =
+            link.getAttribute("href");
 
-        if (window.scrollY > 30) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
+          if (
+            !targetId ||
+            targetId === "#"
+          ) return;
+
+          const target =
+            document.querySelector(targetId);
+
+          if (!target) return;
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+          history.replaceState(
+            null,
+            "",
+            targetId
+          );
+
         }
+      );
 
-      },
-      { passive: true }
-    );
+    });
 
-  }
+
+  /* =======================================================
+     16. INITIALIZE
+     ======================================================= */
+
+  updateCarousel(false);
 
 });
