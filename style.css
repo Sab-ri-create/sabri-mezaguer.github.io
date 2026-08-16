@@ -21,9 +21,9 @@
   --bg-black:        #131209;
   --bg-white:         #FFFFFF;
   --bg-green:         #A7C09E;
-  --bg-green-deep:    #3F6B4A;
-  --bg-blue-electric: #1D4CFF;
-  --bg-blue:          #223E68;
+  --bg-green-deep:    #2D6A1A;
+  --bg-blue-electric: #002162;
+  --bg-blue:          #7FCFF0;
 
   /* type */
   --f-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
@@ -290,9 +290,13 @@ button{ font-family: inherit; background:none; border:none; cursor:pointer; colo
 .brand-card[data-bg="black"] .brand-card__face{ background: var(--bg-black); }
 .brand-card[data-bg="white"] .brand-card__face{ background: var(--bg-white); border: 1px solid var(--ink-20); }
 .brand-card[data-bg="green"] .brand-card__face{ background: var(--bg-green); }
-.brand-card[data-bg="green-deep"] .brand-card__face{ background: var(--bg-green-deep); }
-.brand-card[data-bg="blue-electric"] .brand-card__face{ background: var(--bg-blue-electric); }
-.brand-card[data-bg="blue"] .brand-card__face{ background: var(--bg-blue); }
+.brand-card[data-bg="green-deep"] .brand-card__face{ background: var(--bg-green-deep); padding: 0; }
+.brand-card[data-bg="blue-electric"] .brand-card__face{ background: var(--bg-blue-electric); padding: 0; }
+.brand-card[data-bg="blue"] .brand-card__face{ background: var(--bg-blue); padding: 0; }
+.brand-card[data-bg="none"] .brand-card__face{ background: transparent; padding: 0; }
+
+.brand-card__logo--cover{ object-fit: cover; }
+.brand-card__logo--contain{ object-fit: contain; }
 
 .brand-card__info{
   position:absolute; inset:0;
@@ -355,6 +359,7 @@ button{ font-family: inherit; background:none; border:none; cursor:pointer; colo
   transition: padding-left .3s var(--ease), background .3s var(--ease);
 }
 .pd-row:hover{ padding-left: 14px; background: rgba(21,20,14,.03); }
+.pd-row.is-highlighted{ background: rgba(63,107,74,.09); padding-left: 14px; }
 
 .pd-row__index{
   font-family: var(--f-mono); font-size: .78rem; color: var(--ink-45); letter-spacing: .04em;
