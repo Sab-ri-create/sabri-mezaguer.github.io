@@ -7,15 +7,95 @@ const brands=[
 {name:'LG',year:'2025 · 3 months',image:'assets/images/brands/lg.jpg',project:'lg',kpis:['100+ content managed','High engagement','15+ UGC profiles managed']},
 {name:'IFRI',year:'2024 · 3 months',image:'assets/images/brands/ifri.jpg',project:'ifri',kpis:['20+ influencers collaborated with','60+ content managed','Millions of views']},
 {name:'FACTEUR X',year:'Present',image:'assets/images/brands/facteur-x.jpg',project:'facteur-x',kpis:['End-to-end management','Content & communication','Campaign execution']}];
-const projects=[
-['signal','SIGNAL','2026 · Present','Building an engaging oral-care brand presence.','Managed social media communication, content direction and creator-led storytelling to build a more authentic and engaging relationship between SIGNAL and its audience.',['13.4K Followers','Authentic community','Engaging content','Positive impact'],['Brand management','Social media','Content direction','Creator-led storytelling']],
-['bionnex','BIONNEX','2026 · Present','Building a coherent dermo-cosmetic brand presence.','Managed content, social media direction and visual consistency to strengthen the brand image and create a more coherent digital presence.',['60+ Content managed','Coherent feed','Engaged community','Strong brand image'],['Brand management','Social media','Content','Visual consistency']],
-['clear','CLEAR MEN','2026 · Present','Turning a global partnership into a digital experience.','Developed and managed digital communication around the CLEAR MEN brand, connecting campaign objectives, social content, creators and cultural moments.',['100K+ Followers','#1 Worldwide ranking','Millions of impressions'],['Digital communication','Campaign activation','Social content','Creators']],
-['festival',"FESTIVAL DES SPORTS D'ALGER",'2026','Managing communication at full speed.','Managed high-volume social content and communication during the Festival des Sports d\'Alger, producing and publishing 150 pieces of content across three days of intense activity.',['150 content posted','3 days','High engagement'],['Event communication','Social media','Real-time content','Production']],
-['cheezy','CHEEZY','2025 · 3 months','Creating social communication people interact with.','Managed social media content, community communication and campaign execution for a highly engaging food brand.',['120+ Content pieces','High community engagement','Strong brand loyalty'],['Social media','Community','Campaign execution','Content']],
-['lg','LG','2025 · 3 months','Connecting content, engagement and UGC.','Managed social content and creator-led communication while maintaining a consistent brand presence across digital channels.',['100+ Content managed','High engagement','15+ UGC profiles'],['Social media','Content','UGC','Creator management']],
-['ifri','IFRI','2024 · 3 months','Scaling creator-led brand communication.','Managed influencer collaborations and social content to generate reach and visibility around the brand.',['20+ Influencers','60+ Content managed','Millions of views'],['Influencer marketing','Content','Creator partnerships','Social media']],
-['facteur-x','FACTEUR X','Present','End-to-end communication management.','Managed the communication ecosystem from planning and content direction to execution and coordination.',['End-to-end management','Content & communication','Campaign execution'],['Brand management','Content','Planning','Execution']]];
+const projects = [
+    {
+        name: "SIGNAL",
+        logo: "assets/images/brands/logo-signal.png",
+        year: "2026 · Present",
+        kpis: [
+            "13.4K Followers",
+            "Authentic Community",
+            "Engaging Content"
+        ]
+    },
+
+    {
+        name: "BIONNEX",
+        logo: "assets/images/brands/logo-bionnex.png",
+        year: "2026 · Present",
+        kpis: [
+            "60+ Content managed",
+            "Coherent Feed",
+            "Strong Brand image"
+        ]
+    },
+
+    {
+        name: "CLEAR MEN",
+        logo: "assets/images/brands/logo-clear.png",
+        year: "2026 · Present",
+        kpis: [
+            "100K+ Followers",
+            "#1 Worldwide ranking",
+            "Millions Impressions"
+        ]
+    },
+
+    {
+        name: "FESTIVAL DES SPORTS D'ALGER",
+        logo: "assets/images/brands/logo-festival.png",
+        year: "2026",
+        kpis: [
+            "150 Content pieces",
+            "3 Days",
+            "Event Activation"
+        ]
+    },
+
+    {
+        name: "CHEEZY",
+        logo: "assets/images/brands/logo-cheezy.png",
+        year: "2025 · 3 months",
+        kpis: [
+            "+120 Content pieces",
+            "High Community engagement",
+            "Strong Brand loyalty"
+        ]
+    },
+
+    {
+        name: "LG",
+        logo: "assets/images/brands/logo-lg.png",
+        year: "2025 · 3 months",
+        kpis: [
+            "100+ Content managed",
+            "High Engagement",
+            "15+ UGC profiles"
+        ]
+    },
+
+    {
+        name: "IFRI",
+        logo: "assets/images/brands/logo-ifri.png",
+        year: "2024 · 3 months",
+        kpis: [
+            "20+ Influencers",
+            "60+ Content managed",
+            "Millions of views"
+        ]
+    },
+
+    {
+        name: "FACTEUR X",
+        logo: "assets/images/brands/logo-facteur-x.png",
+        year: "Present",
+        kpis: [
+            "Brand Strategy",
+            "Digital Communication",
+            "Content Direction"
+        ]
+    }
+];
 const backstage=[['clear-01.jpg','CLEAR · Behind the scenes'],['bionnex-01.jpg','BIONNEX · Production'],['clear-02.jpg','CLEAR · Production'],['festival-01.jpg','FESTIVAL · Live'],['bionnex-02.jpg','BIONNEX · Behind the scenes'],['clear-03.jpg','CLEAR · Production'],['bionnex-03.jpg','BIONNEX · Production']];
 const header=document.querySelector('.site-header'),menu=document.querySelector('.menu-toggle');menu.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');menu.setAttribute('aria-expanded',open)});
 document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('menu-open');menu.setAttribute('aria-expanded','false')}));
