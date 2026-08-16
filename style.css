@@ -297,7 +297,7 @@ button{ font-family: inherit; background:none; border:none; cursor:pointer; colo
 
 .brand-card__logo--cover{ object-fit: cover; }
 .brand-card__logo--contain{ object-fit: contain; }
-.brand-card__logo--zoom{ object-fit: cover; transform: scale(1.85); }
+.brand-card__logo--zoom{ object-fit: cover; transform: scale(2.3); }
 
 .brand-card__info{
   position:absolute; inset:0;
