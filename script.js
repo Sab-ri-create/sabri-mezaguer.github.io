@@ -1,16 +1,24 @@
 /* =========================================================
-   SELECTED WORK — BRAND CAROUSEL
-   ========================================================= */
+   SABRI MEZAGUER — PORTFOLIO
+   MAIN JAVASCRIPT
+========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    /* =====================================================
+       BRAND DATA
+    ====================================================== */
+
     const brands = [
+
         {
             name: "CLEAR MEN",
-            year: "01 2026 · Present",
+            year: "2026 · Present",
             logo: "assets/images/brands/logo-clear.png",
-            color: "#1557FF",
-            textColor: "#FFFFFF",
+
+            background: "#1557FF",
+            text: "#FFFFFF",
+
             kpis: [
                 "100K+ Followers",
                 "#1 Worldwide Ranking",
@@ -20,10 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "SIGNAL",
-            year: "02 2026 · Present",
+            year: "2026 · Present",
             logo: "assets/images/brands/logo-signal.png",
-            color: "#FFFFFF",
-            textColor: "#111111",
+
+            background: "#FFFFFF",
+            text: "#111111",
+
             kpis: [
                 "13.4K Followers",
                 "ENGAGING Content",
@@ -33,10 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "BIONNEX",
-            year: "03 2026 · Present",
+            year: "2026 · Present",
             logo: "assets/images/brands/logo-bionnex.png",
-            color: "#CFE8D5",
-            textColor: "#145C35",
+
+            background: "#CFE8D5",
+            text: "#145C35",
+
             kpis: [
                 "60+ Content Managed",
                 "COHERENT Feed",
@@ -46,10 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "FESTIVAL DES SPORTS D'ALGER",
-            year: "04 2026",
+            year: "2026",
             logo: "assets/images/brands/logo-festival.png",
-            color: "#FFFFFF",
-            textColor: "#111111",
+
+            background: "#FFFFFF",
+            text: "#111111",
+
             kpis: [
                 "150 Content Pieces",
                 "3 Days",
@@ -59,10 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "CHEEZY",
-            year: "05 2025 · 3 months",
+            year: "2025 · 3 months",
             logo: "assets/images/brands/logo-cheezy.png",
-            color: "#DDEEDB",
-            textColor: "#174C2C",
+
+            background: "#DDEEDB",
+            text: "#174C2C",
+
             kpis: [
                 "+120 Content Pieces",
                 "HIGH Community Engagement",
@@ -72,10 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "LG",
-            year: "06 2025 · 3 months",
+            year: "2025 · 3 months",
             logo: "assets/images/brands/logo-lg.png",
-            color: "#FFFFFF",
-            textColor: "#111111",
+
+            background: "#FFFFFF",
+            text: "#111111",
+
             kpis: [
                 "100+ Content Managed",
                 "15+ UGC Profiles",
@@ -85,10 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "IFRI",
-            year: "07 2024 · 3 months",
+            year: "2024 · 3 months",
             logo: "assets/images/brands/logo-ifri.png",
-            color: "#DCE8FF",
-            textColor: "#123B87",
+
+            background: "#DCE8FF",
+            text: "#123B87",
+
             kpis: [
                 "20+ Influencers",
                 "60+ Content Managed",
@@ -98,49 +118,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
         {
             name: "FACTEUR X",
-            year: "08 2024",
+            year: "2024",
             logo: "assets/images/brands/logo-facteur-x.png",
-            color: "#000000",
-            textColor: "#FFFFFF",
+
+            background: "#000000",
+            text: "#FFFFFF",
+
             kpis: [
                 "Digital Communication",
                 "Content Management",
                 "Brand Activation"
             ]
         }
+
     ];
 
 
     /* =====================================================
-       FIND CAROUSEL ELEMENTS
-       ===================================================== */
+       CAROUSEL
+    ====================================================== */
 
-    const track =
-        document.querySelector(".brands-track") ||
-        document.querySelector(".carousel-track") ||
-        document.querySelector(".selected-work-track");
+    const track = document.querySelector(".brands-track");
 
-    const prevButton =
-        document.querySelector(".brands-prev") ||
-        document.querySelector(".carousel-prev") ||
-        document.querySelector(".prev");
+    const previousButton =
+        document.querySelector(".carousel-prev");
 
     const nextButton =
-        document.querySelector(".brands-next") ||
-        document.querySelector(".carousel-next") ||
-        document.querySelector(".next");
+        document.querySelector(".carousel-next");
+
+    const progressLines =
+        document.querySelectorAll(".progress-line");
+
 
     if (!track) {
-        console.warn("Carousel track not found.");
+        console.warn("Brands carousel not found.");
         return;
     }
 
 
     /* =====================================================
-       CREATE CARDS
-       ===================================================== */
-
-    track.innerHTML = "";
+       CREATE BRAND CARDS
+    ====================================================== */
 
     brands.forEach((brand, index) => {
 
@@ -148,81 +166,119 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card.className = "brand-card";
 
-        card.dataset.index = index;
-        card.dataset.brand = brand.name;
+        card.style.backgroundColor =
+            brand.background;
 
-        card.style.backgroundColor = brand.color;
-        card.style.color = brand.textColor;
+        card.style.color =
+            brand.text;
 
 
-        /* ---------- LOGO ---------- */
+        /* -----------------------------------------------
+           LOGO
+        ------------------------------------------------ */
 
-        const logoWrapper = document.createElement("div");
+        const logoWrapper =
+            document.createElement("div");
 
-        logoWrapper.className = "brand-logo-wrapper";
+        logoWrapper.className =
+            "brand-logo-wrapper";
 
-        const logo = document.createElement("img");
 
-        logo.className = "brand-logo";
+        const logo =
+            document.createElement("img");
 
-        logo.src = brand.logo;
-        logo.alt = `${brand.name} logo`;
-        logo.loading = "lazy";
-        logo.decoding = "async";
+        logo.className =
+            "brand-logo";
+
+        logo.src =
+            brand.logo;
+
+        logo.alt =
+            `${brand.name} logo`;
+
+        logo.loading =
+            "lazy";
+
 
         logoWrapper.appendChild(logo);
 
 
-        /* ---------- HOVER OVERLAY ---------- */
+        /* -----------------------------------------------
+           KPI HOVER
+        ------------------------------------------------ */
 
-        const overlay = document.createElement("div");
+        const hover =
+            document.createElement("div");
 
-        overlay.className = "brand-hover";
+        hover.className =
+            "brand-hover";
 
-        const kpiContainer = document.createElement("div");
 
-        kpiContainer.className = "brand-kpis";
+        const kpiContainer =
+            document.createElement("div");
+
+        kpiContainer.className =
+            "brand-kpis";
+
 
         brand.kpis.forEach(kpi => {
 
-            const kpiElement = document.createElement("span");
+            const item =
+                document.createElement("span");
 
-            kpiElement.className = "brand-kpi";
-            kpiElement.textContent = kpi;
+            item.className =
+                "brand-kpi";
 
-            kpiContainer.appendChild(kpiElement);
+            item.textContent =
+                kpi;
+
+            kpiContainer.appendChild(item);
 
         });
 
-        overlay.appendChild(kpiContainer);
+
+        hover.appendChild(kpiContainer);
 
 
-        /* ---------- CARD INFO ---------- */
+        /* -----------------------------------------------
+           CARD INFORMATION
+        ------------------------------------------------ */
 
-        const info = document.createElement("div");
+        const info =
+            document.createElement("div");
 
-        info.className = "brand-info";
+        info.className =
+            "brand-info";
 
-        const number = document.createElement("span");
 
-        number.className = "brand-number";
+        const number =
+            document.createElement("span");
+
+        number.className =
+            "brand-number";
 
         number.textContent =
             String(index + 1).padStart(2, "0");
 
 
-        const name = document.createElement("h3");
+        const name =
+            document.createElement("h3");
 
-        name.className = "brand-name";
+        name.className =
+            "brand-name";
 
-        name.textContent = brand.name;
+        name.textContent =
+            brand.name;
 
 
-        const date = document.createElement("span");
+        const date =
+            document.createElement("span");
 
-        date.className = "brand-date";
+        date.className =
+            "brand-date";
 
-        date.textContent = brand.year;
+        date.textContent =
+            brand.year;
 
 
         info.appendChild(number);
@@ -230,83 +286,117 @@ document.addEventListener("DOMContentLoaded", () => {
         info.appendChild(date);
 
 
-        /* ---------- CARD ---------- */
+        /* -----------------------------------------------
+           FINAL CARD
+        ------------------------------------------------ */
 
         card.appendChild(logoWrapper);
+        card.appendChild(hover);
         card.appendChild(info);
-        card.appendChild(overlay);
 
         track.appendChild(card);
+
     });
 
 
     /* =====================================================
-       CAROUSEL
-       ===================================================== */
+       CAROUSEL STATE
+    ====================================================== */
 
     let currentPage = 0;
 
-    const cardsPerPage = 3;
 
-    const totalPages =
-        Math.ceil(brands.length / cardsPerPage);
+    function getCardsPerPage() {
 
+        if (window.innerWidth <= 700) {
+            return 1;
+        }
+
+        if (window.innerWidth <= 1000) {
+            return 2;
+        }
+
+        return 3;
+    }
+
+
+    function getTotalPages() {
+
+        const cardsPerPage =
+            getCardsPerPage();
+
+        return Math.ceil(
+            brands.length / cardsPerPage
+        );
+    }
+
+
+    /* =====================================================
+       MOVE CAROUSEL
+    ====================================================== */
 
     function updateCarousel() {
 
         const cards =
-            Array.from(track.querySelectorAll(".brand-card"));
+            Array.from(
+                track.querySelectorAll(".brand-card")
+            );
 
-        if (!cards.length) return;
+
+        if (!cards.length) {
+            return;
+        }
 
 
-        /*
-         * The CSS controls the actual card width.
-         * We move the track by one group of 3 cards.
-         */
+        const cardsPerPage =
+            getCardsPerPage();
 
-        const firstCard = cards[0];
+
+        const firstCard =
+            cards[0];
+
 
         const cardWidth =
             firstCard.getBoundingClientRect().width;
 
 
-        const computedStyle =
+        const styles =
             window.getComputedStyle(track);
 
+
         const gap =
-            parseFloat(computedStyle.columnGap) ||
-            parseFloat(computedStyle.gap) ||
-            0;
+            parseFloat(styles.gap) || 0;
 
 
-        const movement =
-            (cardWidth + gap) * cardsPerPage;
+        const distance =
+            (cardWidth + gap) *
+            cardsPerPage;
 
 
         track.style.transform =
-            `translateX(-${currentPage * movement}px)`;
+            `translateX(-${currentPage * distance}px)`;
 
 
-        updateButtons();
+        updateControls();
+
     }
 
 
     /* =====================================================
-       BUTTON STATE
-       ===================================================== */
+       CONTROLS
+    ====================================================== */
 
-    function updateButtons() {
+    function updateControls() {
 
-        if (prevButton) {
+        const totalPages =
+            getTotalPages();
 
-            prevButton.disabled =
+
+        if (previousButton) {
+
+            previousButton.disabled =
                 currentPage === 0;
 
-            prevButton.setAttribute(
-                "aria-disabled",
-                currentPage === 0 ? "true" : "false"
-            );
         }
 
 
@@ -315,59 +405,34 @@ document.addEventListener("DOMContentLoaded", () => {
             nextButton.disabled =
                 currentPage >= totalPages - 1;
 
-            nextButton.setAttribute(
-                "aria-disabled",
-                currentPage >= totalPages - 1 ? "true" : "false"
-            );
         }
+
+
+        progressLines.forEach(
+            (line, index) => {
+
+                line.classList.toggle(
+                    "active",
+                    index === currentPage
+                );
+
+            }
+        );
+
     }
 
 
     /* =====================================================
        NEXT
-       ===================================================== */
+    ====================================================== */
 
-    if (nextButton) {
+    nextButton?.addEventListener(
+        "click",
+        () => {
 
-        nextButton.addEventListener("click", () => {
+            const totalPages =
+                getTotalPages();
 
-            if (currentPage < totalPages - 1) {
-
-                currentPage++;
-
-                updateCarousel();
-            }
-
-        });
-    }
-
-
-    /* =====================================================
-       PREVIOUS
-       ===================================================== */
-
-    if (prevButton) {
-
-        prevButton.addEventListener("click", () => {
-
-            if (currentPage > 0) {
-
-                currentPage--;
-
-                updateCarousel();
-            }
-
-        });
-    }
-
-
-    /* =====================================================
-       KEYBOARD NAVIGATION
-       ===================================================== */
-
-    document.addEventListener("keydown", event => {
-
-        if (event.key === "ArrowRight") {
 
             if (
                 currentPage <
@@ -377,42 +442,161 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentPage++;
 
                 updateCarousel();
+
             }
+
         }
+    );
 
 
-        if (event.key === "ArrowLeft") {
+    /* =====================================================
+       PREVIOUS
+    ====================================================== */
+
+    previousButton?.addEventListener(
+        "click",
+        () => {
 
             if (currentPage > 0) {
 
                 currentPage--;
 
                 updateCarousel();
+
             }
+
         }
-
-    });
-
-
-    /* =====================================================
-       RESPONSIVE
-       ===================================================== */
-
-    window.addEventListener(
-        "resize",
-        () => {
-            updateCarousel();
-        },
-        { passive: true }
     );
 
 
     /* =====================================================
-       INITIAL STATE
-       ===================================================== */
+       KEYBOARD
+    ====================================================== */
 
-    requestAnimationFrame(() => {
-        updateCarousel();
-    });
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "ArrowRight" &&
+                document.activeElement.tagName !== "INPUT"
+            ) {
+
+                const totalPages =
+                    getTotalPages();
+
+
+                if (
+                    currentPage <
+                    totalPages - 1
+                ) {
+
+                    currentPage++;
+
+                    updateCarousel();
+
+                }
+
+            }
+
+
+            if (
+                event.key === "ArrowLeft" &&
+                document.activeElement.tagName !== "INPUT"
+            ) {
+
+                if (currentPage > 0) {
+
+                    currentPage--;
+
+                    updateCarousel();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       RESIZE
+    ====================================================== */
+
+    let resizeTimer;
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(resizeTimer);
+
+
+            resizeTimer =
+                setTimeout(
+                    () => {
+
+                        const totalPages =
+                            getTotalPages();
+
+
+                        if (
+                            currentPage >=
+                            totalPages
+                        ) {
+
+                            currentPage =
+                                totalPages - 1;
+
+                        }
+
+
+                        updateCarousel();
+
+                    },
+                    150
+                );
+
+        }
+    );
+
+
+    /* =====================================================
+       IMAGE FALLBACK
+    ====================================================== */
+
+    document
+        .querySelectorAll(".brand-logo")
+        .forEach(image => {
+
+            image.addEventListener(
+                "error",
+                () => {
+
+                    console.error(
+                        `Logo not found: ${image.src}`
+                    );
+
+                    image.style.display =
+                        "none";
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       INITIALIZE
+    ====================================================== */
+
+    requestAnimationFrame(
+        () => {
+
+            updateCarousel();
+
+        }
+    );
 
 });
