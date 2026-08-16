@@ -1,33 +1,6 @@
 /* =========================================================
-   SABRI MEZAGUER — PORTFOLIO
-   ========================================================= */
-
-:root {
-    --bg: #f4f1e8;
-    --text: #111111;
-    --muted: #6f6d66;
-    --line: #d4d0c5;
-
-    /* Brand card colors */
-    --signal: #ffffff;
-    --bionnex: #cfe3d2;
-    --clear: #1557ff;
-    --festival: #ffffff;
-    --cheezy: #8fcf91;
-    --lg: #ffffff;
-    --ifri: #2f73d9;
-    --facteur-x: #111111;
-
-    --card-gap: 24px;
-    --page-padding: 5vw;
-
-    --transition: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-/* =========================================================
    RESET
-   ========================================================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -40,15 +13,19 @@ html {
 }
 
 body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f1e8;
+    color: #111111;
+    font-family:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
     overflow-x: hidden;
 }
 
 img {
-    display: block;
     max-width: 100%;
+    display: block;
 }
 
 a {
@@ -62,176 +39,256 @@ button {
 
 
 /* =========================================================
-   GENERAL
-   ========================================================= */
+   VARIABLES
+========================================================= */
 
-.container {
-    width: 100%;
-    padding-left: var(--page-padding);
-    padding-right: var(--page-padding);
-}
+:root {
+    --bg: #f4f1e8;
+    --text: #111111;
+    --muted: #696961;
+    --line: #d3d0c6;
+    --green: #547443;
+    --green-light: #dce8d3;
 
-.section {
-    width: 100%;
-    position: relative;
+    --page-padding: clamp(24px, 5vw, 80px);
+
+    --display:
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
 }
 
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 .site-header {
-    width: 100%;
-    padding: 24px var(--page-padding);
+    height: 82px;
+    padding: 0 var(--page-padding);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    border-bottom: 1px solid var(--line);
+
     position: relative;
-    z-index: 50;
+    z-index: 100;
 }
 
-.logo {
+.logo-mark {
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.06em;
 }
 
-.nav {
+.main-nav {
     display: flex;
-    gap: 28px;
+    gap: 30px;
 }
 
-.nav a {
-    font-size: 14px;
-    transition: opacity 0.25s ease;
+.main-nav a,
+.header-contact {
+    font-size: 13px;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
 }
 
-.nav a:hover {
+.main-nav a:hover,
+.header-contact:hover {
     opacity: 0.5;
+}
+
+.header-contact {
+    border-bottom: 1px solid #111;
+    padding-bottom: 4px;
+}
+
+.header-contact span {
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section {
+    padding: clamp(100px, 12vw, 180px) var(--page-padding);
+}
+
+.eyebrow {
+    display: block;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    color: var(--muted);
+
+    margin-bottom: 24px;
+}
+
+.section-heading {
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+    gap: 60px;
+
+    margin-bottom: 80px;
+}
+
+.section-heading h2,
+.scale-heading h2,
+.about-intro h2 {
+    font-family: var(--display);
+
+    font-size: clamp(52px, 7vw, 108px);
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+
+    font-weight: 700;
+}
+
+.section-heading p {
+    max-width: 480px;
+
+    font-size: 18px;
+    line-height: 1.45;
+
+    color: var(--muted);
+
+    align-self: end;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
 }
 
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero {
-    min-height: 90vh;
+    min-height: calc(100vh - 82px);
 
-    padding: 100px var(--page-padding) 80px;
+    padding:
+        32px
+        var(--page-padding)
+        45px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.hero-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 60px;
-}
+.hero-topline {
+    font-size: 11px;
+    font-weight: 600;
 
-.hero-label {
-    font-size: 13px;
-    font-weight: 700;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
-.hero-title {
-    max-width: 900px;
-
-    margin-top: 80px;
-
-    font-size: clamp(60px, 8vw, 140px);
-    line-height: 0.88;
-    letter-spacing: -0.065em;
-    font-weight: 700;
+.hero-content {
+    max-width: 1200px;
+    margin: auto 0;
+    padding: 100px 0;
 }
 
-.hero-description {
-    max-width: 440px;
-    margin-top: 20px;
+.hero h1 {
+    max-width: 1150px;
 
-    font-size: 18px;
+    font-size: clamp(64px, 9vw, 150px);
+    line-height: 0.87;
+
+    letter-spacing: -0.075em;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--green);
+}
+
+.hero-content p {
+    max-width: 680px;
+
+    margin-top: 42px;
+
+    font-size: clamp(18px, 2vw, 25px);
+    line-height: 1.35;
+
     color: var(--muted);
 }
 
-.hero-links {
+.hero-actions {
     display: flex;
-    gap: 30px;
-    margin-top: 50px;
+    gap: 35px;
+
+    margin-top: 42px;
 }
 
-.hero-links a {
-    border-bottom: 1px solid var(--text);
-    padding-bottom: 5px;
+.text-link {
+    font-size: 14px;
+    font-weight: 600;
+
+    border-bottom: 1px solid #111;
+    padding-bottom: 6px;
+}
+
+.text-link span {
+    margin-left: 5px;
+}
+
+.hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+.hero-bottom span:nth-child(even) {
+    color: var(--green);
 }
 
 
 /* =========================================================
    SELECTED WORK
-   ========================================================= */
+========================================================= */
 
 .selected-work {
-    padding-top: 140px;
-    padding-bottom: 150px;
+    border-top: 1px solid var(--line);
 }
 
-.selected-work-header {
-    display: grid;
-    grid-template-columns: 1.4fr 0.6fr;
-
-    gap: 80px;
-
-    margin-bottom: 80px;
-}
-
-.selected-work-title {
-    max-width: 700px;
-
-    font-size: clamp(60px, 7vw, 120px);
-    line-height: 0.88;
-    letter-spacing: -0.065em;
-}
-
-.selected-work-description {
-    max-width: 430px;
-
-    align-self: end;
-
-    font-size: 18px;
-    line-height: 1.5;
-
-    color: var(--muted);
-}
-
-
-/* =========================================================
-   CAROUSEL
-   ========================================================= */
-
-.work-carousel {
+.brand-carousel {
     position: relative;
 
-    width: 100%;
-
-    padding: 0 100px;
+    display: flex;
+    align-items: center;
+    gap: 26px;
 }
 
-.work-carousel-viewport {
+.carousel-window {
     width: 100%;
     overflow: hidden;
 }
 
-.work-carousel-track {
+.brands-track {
     display: flex;
-    gap: var(--card-gap);
+    gap: 26px;
 
-    transition: transform var(--transition);
+    transition:
+        transform 0.7s cubic-bezier(0.2, 0.75, 0.25, 1);
 
     will-change: transform;
 }
@@ -239,670 +296,483 @@ button {
 
 /* =========================================================
    BRAND CARDS
-   ========================================================= */
+========================================================= */
 
 .brand-card {
-
-    /*
-       EXACTLY 3 CARDS ON DESKTOP
-    */
-
-    flex: 0 0 calc(
-        (100% - (var(--card-gap) * 2)) / 3
-    );
-
-    /*
-       PERFECT SQUARE
-    */
+    flex: 0 0 calc((100% - 52px) / 3);
 
     aspect-ratio: 1 / 1;
 
     position: relative;
 
-    min-width: 0;
-
     overflow: hidden;
 
-    border: 1px solid rgba(17,17,17,0.12);
+    border: 1px solid rgba(0, 0, 0, 0.12);
 
     cursor: pointer;
-
-    transition:
-        transform var(--transition),
-        box-shadow var(--transition);
 }
 
-
-/* =========================================================
-   INDIVIDUAL BRAND COLORS
-   ========================================================= */
-
-/*
-   IMPORTANT:
-   The order must correspond to the carousel order.
-
-   01 SIGNAL
-   02 BIONNEX
-   03 CLEAR MEN
-   04 FESTIVAL
-   05 CHEEZY
-   06 LG
-   07 IFRI
-   08 FACTEUR X
-*/
-
-
-.brand-card:nth-child(1) {
-    background: var(--signal);
-}
-
-.brand-card:nth-child(2) {
-    background: var(--bionnex);
-}
-
-.brand-card:nth-child(3) {
-    background: var(--clear);
-}
-
-.brand-card:nth-child(4) {
-    background: var(--festival);
-}
-
-.brand-card:nth-child(5) {
-    background: var(--cheezy);
-}
-
-.brand-card:nth-child(6) {
-    background: var(--lg);
-}
-
-.brand-card:nth-child(7) {
-    background: var(--ifri);
-}
-
-.brand-card:nth-child(8) {
-    background: var(--facteur-x);
-}
-
-
-/* =========================================================
-   CARD HOVER
-   ========================================================= */
-
-.brand-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,0.10);
-}
-
-
-/* =========================================================
-   LOGO
-   ========================================================= */
-
-.brand-card-logo {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    /*
-       BIG LOGOS
-    */
-
-    width: 78%;
-    height: 78%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 2;
-
-    transition:
-        transform var(--transition),
-        opacity 0.35s ease;
-}
-
-.brand-card-logo img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    /*
-       Logos are transparent PNGs.
-       They can therefore occupy most of the card
-       without being cropped.
-    */
-
-    transform: scale(1);
-
-    transition:
-        transform var(--transition);
-}
-
-
-/*
-   Slightly larger logos on hover
-*/
-
-.brand-card:hover .brand-card-logo {
-    transform:
-        translate(-50%, -50%)
-        scale(1.04);
-}
-
-
-/* =========================================================
-   SPECIAL LOGO SIZING
-   ========================================================= */
-
-/*
-   Some logos naturally have more transparent space
-   around them. These adjustments compensate for that.
-*/
-
-
-/* SIGNAL */
-
-.brand-card:nth-child(1) .brand-card-logo {
-    width: 78%;
-    height: 78%;
-}
-
-
-/* BIONNEX */
-
-.brand-card:nth-child(2) .brand-card-logo {
-    width: 82%;
-    height: 82%;
-}
-
-
-/* CLEAR MEN */
-
-.brand-card:nth-child(3) .brand-card-logo {
-    width: 82%;
-    height: 82%;
-}
-
-
-/* FESTIVAL */
-
-.brand-card:nth-child(4) .brand-card-logo {
-    width: 78%;
-    height: 78%;
-}
-
-
-/* CHEEZY */
-
-.brand-card:nth-child(5) .brand-card-logo {
-    width: 82%;
-    height: 82%;
-}
-
-
-/* LG */
-
-.brand-card:nth-child(6) .brand-card-logo {
-    width: 78%;
-    height: 78%;
-}
-
-
-/* IFRI */
-
-.brand-card:nth-child(7) .brand-card-logo {
-    width: 82%;
-    height: 82%;
-}
-
-
-/* FACTEUR X */
-
-.brand-card:nth-child(8) .brand-card-logo {
-    width: 82%;
-    height: 82%;
-}
-
-
-/* =========================================================
-   KPI OVERLAY
-   ========================================================= */
-
-.brand-card-overlay {
-
+.brand-logo-wrapper {
     position: absolute;
 
     inset: 0;
 
-    padding: 32px;
-
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    background: rgba(17,17,17,0.94);
-
-    color: #ffffff;
-
-    opacity: 0;
-
-    transform: translateY(15px);
-
-    transition:
-        opacity 0.35s ease,
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-
-    z-index: 10;
-
-    pointer-events: none;
-}
-
-.brand-card:hover .brand-card-overlay {
-
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   KPI TEXT
-   ========================================================= */
-
-.brand-card-overlay-label {
-
-    font-size: 11px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.12em;
-
-    opacity: 0.55;
-
-    margin-bottom: 14px;
-}
-
-.brand-card-overlay h3 {
-
-    font-size: 30px;
-
-    line-height: 1;
-
-    letter-spacing: -0.04em;
-
-    margin-bottom: 25px;
-}
-
-.brand-kpis {
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.brand-kpi {
-
-    font-size: 15px;
-
-    line-height: 1.3;
-}
-
-.brand-kpi strong {
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   VIEW PROJECT
-   ========================================================= */
-
-.brand-card-link {
-
-    position: absolute;
-
-    top: 30px;
-    left: 30px;
-
-    z-index: 15;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-
-    opacity: 0;
-
-    transform: translateY(-8px);
-
-    transition:
-        opacity 0.3s ease,
-        transform 0.35s ease;
-}
-
-.brand-card:hover .brand-card-link {
-
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   CAROUSEL ARROWS
-   ========================================================= */
-
-.carousel-arrow {
-
-    position: absolute;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 64px;
-    height: 64px;
-
-    border: 1px solid #bdb9af;
-
-    background: var(--bg);
-
-    display: flex;
-
     align-items: center;
     justify-content: center;
 
-    cursor: pointer;
+    padding: 14%;
+}
 
-    z-index: 30;
+.brand-logo {
+    width: 78%;
+    height: 78%;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.brand-card:hover .brand-logo {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   BRAND INFO
+========================================================= */
+
+.brand-info {
+    position: absolute;
+
+    left: 24px;
+    right: 24px;
+    bottom: 22px;
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    z-index: 3;
+}
+
+.brand-card:hover .brand-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.brand-number {
+    font-size: 10px;
+    margin-bottom: 6px;
+}
+
+.brand-name {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.brand-date {
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   KPI HOVER
+========================================================= */
+
+.brand-hover {
+    position: absolute;
+
+    inset: 0;
+
+    padding: 28px;
+
+    display: flex;
+    align-items: flex-end;
+
+    opacity: 0;
+
+    background: rgba(0, 0, 0, 0.08);
+
+    transition: opacity 0.35s ease;
+
+    z-index: 2;
+}
+
+.brand-card:hover .brand-hover {
+    opacity: 1;
+}
+
+.brand-kpis {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    max-width: 90%;
+}
+
+.brand-kpi {
+    font-size: 12px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    padding: 8px 10px;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    color: #111;
+
+    width: fit-content;
+}
+
+.brand-card[style*="#000000"] .brand-kpi {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.carousel-arrow {
+    flex: 0 0 62px;
+
+    width: 62px;
+    height: 62px;
+
+    background: transparent;
+
+    border: 1px solid #bdbab0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    cursor: pointer;
 
     transition:
         background 0.25s ease,
         color 0.25s ease,
-        border-color 0.25s ease,
-        transform 0.25s ease;
+        border-color 0.25s ease;
 }
 
 .carousel-arrow:hover {
-
-    background: #111111;
-
-    color: #ffffff;
-
-    border-color: #111111;
-}
-
-.carousel-arrow:active {
-
-    transform:
-        translateY(-50%)
-        scale(0.95);
-}
-
-.carousel-arrow span {
-
-    font-size: 25px;
-
-    line-height: 1;
-}
-
-.carousel-arrow.prev {
-    left: 0;
-}
-
-.carousel-arrow.next {
-    right: 0;
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
 }
 
 .carousel-arrow:disabled {
-
-    opacity: 0.3;
-
+    opacity: 0.25;
     cursor: default;
 }
 
+.carousel-arrow:disabled:hover {
+    background: transparent;
+    color: #111;
+    border-color: #bdbab0;
+}
+
 
 /* =========================================================
-   CAROUSEL PROGRESS
-   ========================================================= */
+   PROGRESS
+========================================================= */
 
 .carousel-progress {
-
-    width: 100%;
-
-    margin-top: 35px;
-
     display: flex;
-
     gap: 8px;
+
+    margin-top: 32px;
 }
 
-.carousel-progress-item {
+.progress-line {
+    width: 34px;
+    height: 2px;
 
-    height: 3px;
+    background: #c8c5bc;
 
-    flex: 1;
-
-    background: #d3d0c7;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-.carousel-progress-item.active {
-
-    background: #708d4d;
+.progress-line.active {
+    background: var(--green);
 }
 
 
 /* =========================================================
-   KPI SECTION
-   ========================================================= */
+   SCALE / KPI
+========================================================= */
 
-.project-intro {
-
-    padding: 150px var(--page-padding);
+.scale-section {
+    padding-top: 120px;
 }
 
-.project-intro-title {
-
-    max-width: 900px;
-
-    font-size: clamp(55px, 7vw, 110px);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.06em;
+.scale-heading h2 span {
+    color: var(--green);
 }
-
-.project-intro-description {
-
-    max-width: 650px;
-
-    margin-top: 35px;
-
-    font-size: 20px;
-
-    color: var(--muted);
-}
-
-
-/* =========================================================
-   KPI GRID
-   ========================================================= */
 
 .kpi-grid {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    margin-top: 90px;
+    grid-template-columns: repeat(4, 1fr);
 
     border-top: 1px solid var(--line);
-
     border-bottom: 1px solid var(--line);
+
+    margin-top: 100px;
 }
 
 .kpi-item {
-
-    padding: 35px 25px 40px;
+    padding: 32px 28px 38px;
 
     border-right: 1px solid var(--line);
 }
 
-.kpi-item:last-child {
+.kpi-item:first-child {
+    padding-left: 0;
+}
 
+.kpi-item:last-child {
     border-right: none;
 }
 
-.kpi-number {
+.kpi-item strong {
+    display: block;
 
-    font-size: clamp(40px, 4vw, 70px);
-
-    font-weight: 700;
-
+    font-size: 48px;
     line-height: 1;
+
+    letter-spacing: -0.05em;
+
+    color: var(--green);
+
+    margin-bottom: 18px;
+}
+
+.kpi-item h3 {
+    font-size: 17px;
+    line-height: 1.1;
+
+    max-width: 230px;
+
+    margin-bottom: 12px;
+}
+
+.kpi-item p {
+    font-size: 13px;
+    line-height: 1.45;
+
+    color: var(--muted);
+
+    max-width: 250px;
+}
+
+.scale-statement {
+    max-width: 900px;
+
+    margin-top: 40px;
+}
+
+.scale-statement p {
+    font-size: clamp(22px, 3vw, 38px);
+    line-height: 1.12;
+
+    letter-spacing: -0.03em;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-section {
+    border-top: 1px solid var(--line);
+}
+
+.projects-list {
+    border-top: 1px solid var(--line);
+}
+
+.project-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px;
+
+    gap: 30px;
+
+    padding: 38px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    transition:
+        padding 0.3s ease,
+        background 0.3s ease;
+}
+
+.project-row:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background: var(--green-light);
+}
+
+.project-number {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.project-category {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+
+    color: var(--muted);
+}
+
+.project-main h3 {
+    margin-top: 10px;
+
+    font-size: clamp(32px, 4vw, 58px);
+
+    line-height: 0.95;
 
     letter-spacing: -0.05em;
 }
 
-.kpi-label {
+.project-main p {
+    max-width: 650px;
 
-    margin-top: 15px;
-
-    font-size: 14px;
+    margin-top: 16px;
 
     color: var(--muted);
 
-    text-transform: uppercase;
+    font-size: 15px;
+    line-height: 1.45;
+}
 
-    letter-spacing: 0.08em;
+.project-meta {
+    font-size: 12px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: var(--muted);
+}
+
+.project-meta span {
+    color: #111;
 }
 
 
 /* =========================================================
-   BEHIND THE SCENES
-   ========================================================= */
+   BEHIND THE BRANDS
+========================================================= */
 
-.behind-scenes {
+.behind-section {
+    padding: 120px 0 140px;
 
-    padding: 150px 0;
+    overflow: hidden;
+
+    border-top: 1px solid var(--line);
+}
+
+.behind-heading {
+    padding: 0 var(--page-padding);
+
+    display: grid;
+    grid-template-columns: 1fr 0.65fr;
+
+    gap: 60px;
+
+    margin-bottom: 80px;
+}
+
+.behind-heading h2 {
+    font-size: clamp(54px, 7vw, 110px);
+
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+}
+
+.behind-heading h2 span {
+    color: var(--green);
+}
+
+.behind-heading p {
+    align-self: end;
+
+    max-width: 470px;
+
+    color: var(--muted);
+
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+.behind-marquee {
+    width: 100%;
 
     overflow: hidden;
 }
 
-.behind-scenes-header {
-
-    padding: 0 var(--page-padding);
-
-    margin-bottom: 70px;
-
+.behind-track {
     display: flex;
+    align-items: center;
 
-    justify-content: space-between;
-
-    align-items: flex-end;
-
-    gap: 50px;
-}
-
-.behind-scenes-title {
-
-    font-size: clamp(55px, 7vw, 110px);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.06em;
-}
-
-.behind-scenes-description {
-
-    max-width: 400px;
-
-    color: var(--muted);
-
-    font-size: 17px;
-}
-
-
-/* =========================================================
-   BTS MARQUEE
-   ========================================================= */
-
-.bts-marquee {
+    gap: 12px;
 
     width: max-content;
 
-    display: flex;
-
-    gap: 12px;
-
     animation:
-        btsScroll 45s linear infinite;
-
-    will-change: transform;
+        behindMove 40s linear infinite;
 }
 
-.bts-marquee:hover {
-
+.behind-marquee:hover .behind-track {
     animation-play-state: paused;
 }
 
-.bts-set {
+.behind-image {
+    flex-shrink: 0;
 
-    display: flex;
+    overflow: hidden;
 
-    gap: 12px;
+    background: #dedbd1;
 }
 
-.bts-image {
+.behind-image.tall {
+    width: 250px;
+    height: 360px;
+}
 
-    height: 330px;
+.behind-image.wide {
+    width: 440px;
+    height: 300px;
+}
 
-    width: 260px;
+.behind-image img {
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
-    flex-shrink: 0;
+    transition: transform 0.6s ease;
 }
 
-.bts-image.tall {
-
-    height: 430px;
-
-    width: 300px;
+.behind-image:hover img {
+    transform: scale(1.04);
 }
 
-.bts-image.wide {
-
-    height: 300px;
-
-    width: 430px;
-}
-
-.bts-image.small {
-
-    height: 270px;
-
-    width: 220px;
-}
-
-@keyframes btsScroll {
+@keyframes behindMove {
 
     from {
         transform: translateX(0);
@@ -911,550 +781,593 @@ button {
     to {
         transform: translateX(-50%);
     }
+
 }
 
 
 /* =========================================================
    APPROACH
-   ========================================================= */
+========================================================= */
 
-.approach {
-
-    padding: 150px var(--page-padding);
+.approach-section {
+    border-top: 1px solid var(--line);
 }
 
-.approach-header {
-
-    max-width: 900px;
-
-    margin-bottom: 100px;
+.approach-section .section-heading {
+    margin-bottom: 90px;
 }
 
-.approach-title {
-
-    font-size: clamp(55px, 7vw, 110px);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.06em;
+.approach-section .section-heading h2 span {
+    color: var(--green);
 }
 
-.approach-intro {
-
-    max-width: 650px;
-
-    margin-top: 35px;
-
-    font-size: 20px;
-
-    color: var(--muted);
-}
-
-.approach-steps {
-
+.approach-list {
     border-top: 1px solid var(--line);
 }
 
 .approach-step {
-
     display: grid;
+    grid-template-columns: 90px 1fr;
 
-    grid-template-columns:
-        100px
-        0.8fr
-        1.2fr;
+    gap: 30px;
 
-    gap: 50px;
-
-    padding: 50px 0;
+    padding: 42px 0;
 
     border-bottom: 1px solid var(--line);
 }
 
-.approach-number {
-
-    font-size: 14px;
-
-    color: #526b38;
+.step-number {
+    font-size: 11px;
+    color: var(--green);
 
     font-weight: 700;
 }
 
-.approach-step-title {
-
-    font-size: 34px;
-
-    line-height: 1;
+.approach-step h3 {
+    font-size: clamp(27px, 3vw, 42px);
 
     letter-spacing: -0.04em;
+
+    line-height: 1;
 }
 
-.approach-step-text {
+.approach-step p {
+    max-width: 750px;
 
-    max-width: 550px;
+    margin-top: 16px;
 
-    font-size: 17px;
-
-    line-height: 1.55;
+    font-size: 16px;
+    line-height: 1.5;
 
     color: var(--muted);
+}
+
+.approach-loop {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 60px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+}
+
+.approach-loop span:nth-child(even) {
+    color: var(--green);
 }
 
 
 /* =========================================================
    ABOUT
-   ========================================================= */
+========================================================= */
 
-.about {
-
-    padding: 150px var(--page-padding);
-
-    background: #708d4d;
-
-    color: #ffffff;
-}
-
-.about-grid {
-
+.about-section {
     display: grid;
 
-    grid-template-columns:
-        1.1fr
-        0.9fr;
+    grid-template-columns: 0.8fr 1.2fr;
 
-    gap: 100px;
+    column-gap: 100px;
+    row-gap: 80px;
+
+    border-top: 1px solid var(--line);
 }
 
-.about-title {
-
-    font-size: clamp(60px, 8vw, 130px);
-
-    line-height: 0.86;
-
-    letter-spacing: -0.07em;
+.about-intro h2 span {
+    color: var(--green);
 }
 
-.about-description {
-
-    margin-top: 45px;
-
-    max-width: 650px;
-
-    font-size: 21px;
-
-    line-height: 1.45;
+.about-content {
+    max-width: 750px;
 }
 
-.about-right {
+.about-content p {
+    font-size: 17px;
+    line-height: 1.55;
 
-    display: flex;
+    color: var(--muted);
 
-    flex-direction: column;
-
-    gap: 70px;
+    margin-bottom: 24px;
 }
 
-.about-block-title {
+.about-content .about-lead {
+    color: #111;
 
-    font-size: 12px;
+    font-size: clamp(26px, 3vw, 42px);
 
-    text-transform: uppercase;
+    line-height: 1.08;
 
-    letter-spacing: 0.12em;
+    letter-spacing: -0.035em;
 
-    opacity: 0.65;
-
-    margin-bottom: 20px;
-}
-
-.languages {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-}
-
-.language {
-
-    border: 1px solid rgba(255,255,255,0.5);
-
-    padding: 10px 15px;
-
-    font-size: 14px;
+    margin-bottom: 45px;
 }
 
 .qualities {
-
     display: flex;
+    flex-wrap: wrap;
 
-    flex-direction: column;
+    gap: 9px;
+
+    margin-top: 45px;
 }
 
-.quality {
+.qualities span {
+    padding: 10px 14px;
 
-    padding: 16px 0;
+    border: 1px solid #c8c5bb;
 
-    border-top:
-        1px solid
-        rgba(255,255,255,0.25);
+    font-size: 12px;
 
-    font-size: 22px;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.qualities span:hover {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
 }
 
 
 /* =========================================================
-   CONTACT
-   ========================================================= */
+   LANGUAGES
+========================================================= */
 
-.contact {
+.languages {
+    grid-column: 1 / -1;
 
-    padding:
-        160px
-        var(--page-padding)
-        80px;
-}
+    display: grid;
 
-.contact-title {
-
-    max-width: 1000px;
-
-    font-size: clamp(70px, 10vw, 160px);
-
-    line-height: 0.85;
-
-    letter-spacing: -0.07em;
-}
-
-.contact-email {
-
-    display: inline-block;
-
-    margin-top: 70px;
-
-    font-size: clamp(25px, 3vw, 45px);
-
-    border-bottom:
-        2px solid
-        var(--text);
-
-    padding-bottom: 8px;
-}
-
-.contact-footer {
-
-    margin-top: 150px;
-
-    padding-top: 25px;
+    grid-template-columns: 1.2fr repeat(3, 1fr);
 
     border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
 
+.language-heading,
+.language-item {
+    padding: 30px;
+
+    border-right: 1px solid var(--line);
+}
+
+.language-heading {
+    padding-left: 0;
+
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    color: var(--muted);
+}
+
+.language-item {
     display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-    justify-content: space-between;
+.language-item:last-child {
+    border-right: none;
+}
 
-    font-size: 13px;
+.language-item strong {
+    font-size: 28px;
+
+    color: var(--green);
+
+    letter-spacing: -0.05em;
+}
+
+.language-item h3 {
+    font-size: 16px;
+}
+
+.language-item span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
 
     color: var(--muted);
 }
 
 
 /* =========================================================
-   TABLET
-   ========================================================= */
+   CONTACT
+========================================================= */
 
-@media (max-width: 1000px) {
+.contact-section {
+    padding: 160px var(--page-padding) 100px;
 
-    :root {
-        --page-padding: 4vw;
-        --card-gap: 18px;
-    }
+    background: #1f2c1c;
 
-    .selected-work-header {
+    color: #f5f3eb;
+}
 
-        grid-template-columns: 1fr;
+.contact-inner {
+    max-width: 1100px;
+}
 
-        gap: 30px;
-    }
+.contact-section .eyebrow {
+    color: #b5c6ad;
+}
 
-    .work-carousel {
+.contact-section h2 {
+    font-size: clamp(58px, 9vw, 140px);
 
-        padding: 0 80px;
-    }
+    line-height: 0.86;
 
-    .carousel-arrow {
+    letter-spacing: -0.075em;
+}
 
-        width: 54px;
-        height: 54px;
-    }
+.contact-section h2 span {
+    color: #a9c496;
+}
 
-    .kpi-grid {
+.contact-section p {
+    max-width: 550px;
 
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
+    margin-top: 40px;
 
-    .kpi-item:nth-child(2) {
+    font-size: 18px;
 
-        border-right: none;
-    }
+    line-height: 1.45;
 
-    .kpi-item:nth-child(-n + 2) {
+    color: #c9d2c3;
+}
 
-        border-bottom:
-            1px solid
-            var(--line);
-    }
+.contact-button {
+    display: inline-block;
 
-    .approach-step {
+    margin-top: 40px;
 
-        grid-template-columns:
-            70px
-            1fr;
-    }
+    padding: 15px 20px;
 
-    .approach-step-text {
+    border: 1px solid #a9c496;
 
-        grid-column: 2;
-    }
+    color: #f5f3eb;
 
-    .about-grid {
+    font-size: 13px;
 
-        grid-template-columns: 1fr;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
 
-        gap: 80px;
-    }
+.contact-button:hover {
+    background: #a9c496;
+    color: #1f2c1c;
+}
+
+.contact-details {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    margin-top: 100px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-details a {
+    font-size: 12px;
+
+    color: #c9d2c3;
 }
 
 
 /* =========================================================
-   MOBILE
-   ========================================================= */
+   FOOTER
+========================================================= */
+
+.site-footer {
+    padding: 22px var(--page-padding);
+
+    background: #1f2c1c;
+
+    color: #aeb8a8;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .main-nav {
+        gap: 16px;
+    }
+
+    .section-heading,
+    .behind-heading {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kpi-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .brand-card {
+        flex-basis: calc((100% - 26px) / 2);
+    }
+
+    .languages {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .language-heading {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .language-item:nth-child(3) {
+        border-right: none;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
     :root {
         --page-padding: 20px;
-        --card-gap: 14px;
     }
+
 
     .site-header {
-
-        padding: 20px;
+        height: 70px;
     }
 
-    .nav {
-
-        gap: 14px;
+    .main-nav {
+        display: none;
     }
 
-    .nav a {
-
+    .header-contact {
         font-size: 12px;
     }
 
+
     .hero {
+        min-height: calc(100vh - 70px);
 
-        min-height: 80vh;
-
-        padding-top: 70px;
+        padding-top: 25px;
+        padding-bottom: 30px;
     }
 
-    .hero-top {
-
-        flex-direction: column;
+    .hero-content {
+        padding: 70px 0;
     }
 
-    .hero-title {
-
-        margin-top: 55px;
-
-        font-size:
-            clamp(
-                50px,
-                16vw,
-                90px
-            );
+    .hero h1 {
+        font-size: clamp(53px, 15vw, 80px);
     }
 
-    .selected-work {
+    .hero-content p {
+        font-size: 17px;
+    }
 
+    .hero-bottom {
+        font-size: 9px;
+        gap: 7px;
+    }
+
+
+    .section {
         padding-top: 90px;
-
-        padding-bottom: 100px;
+        padding-bottom: 90px;
     }
 
-    .selected-work-title {
+    .section-heading {
+        gap: 35px;
 
-        font-size:
-            clamp(
-                50px,
-                15vw,
-                80px
-            );
+        margin-bottom: 50px;
     }
 
-    /*
-       ONE SQUARE CARD ON MOBILE
-    */
-
-    .work-carousel {
-
-        padding: 0 55px;
+    .section-heading h2,
+    .scale-heading h2,
+    .about-intro h2 {
+        font-size: 58px;
     }
 
-    .brand-card {
 
-        flex:
-            0 0 100%;
-
-        aspect-ratio:
-            1 / 1;
-    }
-
-    .brand-card-logo {
-
-        width: 78%;
-        height: 78%;
+    .brand-carousel {
+        gap: 8px;
     }
 
     .carousel-arrow {
+        flex: 0 0 46px;
 
-        width: 44px;
-        height: 44px;
+        width: 46px;
+        height: 46px;
+
+        font-size: 18px;
     }
 
-    .carousel-arrow span {
-
-        font-size: 19px;
+    .brand-card {
+        flex-basis: 100%;
     }
 
-    .brand-card-overlay {
-
-        padding: 22px;
+    .brand-logo-wrapper {
+        padding: 10%;
     }
 
-    .brand-card-overlay h3 {
-
-        font-size: 23px;
+    .brand-logo {
+        width: 85%;
+        height: 85%;
     }
 
-    .project-intro,
-    .approach,
-    .about {
-
-        padding-top: 100px;
-
-        padding-bottom: 100px;
-    }
 
     .kpi-grid {
-
         grid-template-columns: 1fr;
+
+        margin-top: 60px;
     }
 
-    .kpi-item {
+    .kpi-item,
+    .kpi-item:first-child {
+        padding: 28px 0;
 
         border-right: none;
-
-        border-bottom:
-            1px solid
-            var(--line);
+        border-bottom: 1px solid var(--line);
     }
 
     .kpi-item:last-child {
-
         border-bottom: none;
     }
 
-    .behind-scenes {
 
-        padding: 100px 0;
+    .project-row {
+        grid-template-columns: 35px 1fr;
+
+        gap: 15px;
     }
 
-    .behind-scenes-header {
-
-        padding:
-            0 20px;
-
-        flex-direction: column;
-
-        align-items: flex-start;
+    .project-meta {
+        display: none;
     }
+
+    .project-main h3 {
+        font-size: 34px;
+    }
+
+
+    .behind-section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+    .behind-heading {
+        padding: 0 var(--page-padding);
+
+        margin-bottom: 50px;
+    }
+
+    .behind-heading h2 {
+        font-size: 58px;
+    }
+
+    .behind-image.tall {
+        width: 180px;
+        height: 270px;
+    }
+
+    .behind-image.wide {
+        width: 320px;
+        height: 220px;
+    }
+
 
     .approach-step {
+        grid-template-columns: 45px 1fr;
 
+        gap: 10px;
+
+        padding: 32px 0;
+    }
+
+    .approach-step h3 {
+        font-size: 29px;
+    }
+
+    .approach-step p {
+        font-size: 14px;
+    }
+
+
+    .about-section {
         grid-template-columns: 1fr;
-
-        gap: 20px;
-    }
-
-    .approach-step-text {
-
-        grid-column: auto;
-    }
-
-    .about-grid {
 
         gap: 60px;
     }
 
-    .contact {
+    .languages {
+        grid-column: auto;
 
-        padding:
-            100px
-            20px
-            50px;
+        grid-template-columns: 1fr;
     }
 
-    .contact-footer {
+    .language-heading,
+    .language-item {
+        padding: 22px 0;
 
-        margin-top: 100px;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+    }
 
+    .language-item:last-child {
+        border-bottom: none;
+    }
+
+
+    .contact-section {
+        padding-top: 110px;
+        padding-bottom: 70px;
+    }
+
+    .contact-section h2 {
+        font-size: 59px;
+    }
+
+    .contact-details {
         flex-direction: column;
 
-        gap: 15px;
-    }
-}
+        gap: 14px;
 
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-button:focus-visible,
-a:focus-visible {
-
-    outline:
-        2px solid
-        #526b38;
-
-    outline-offset: 4px;
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
+        margin-top: 70px;
     }
 
-    *,
-    *::before,
-    *::after {
 
-        transition-duration:
-            0.01ms !important;
+    .site-footer {
+        flex-direction: column;
 
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
+        gap: 10px;
     }
+
 }
