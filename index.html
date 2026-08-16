@@ -85,23 +85,7 @@
       <div class="carousel__viewport" id="carouselViewport">
         <ul class="carousel__track" id="carouselTrack">
 
-          <li class="brand-card" data-bg="black" tabindex="0">
-            <div class="brand-card__face">
-              <img src="images/facteur-x.png" alt="Facteur X logo" class="brand-card__logo" loading="lazy">
-            </div>
-            <div class="brand-card__info">
-              <p class="brand-card__name">Facteur X</p>
-              <p class="brand-card__year">2026</p>
-              <ul class="brand-card__kpis">
-                <li>Creative direction</li>
-                <li>Content production</li>
-                <li>Social media</li>
-                <li>Digital communication</li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="brand-card" data-bg="green" tabindex="0">
+          <li class="brand-card" data-bg="green" data-target="brand-bionnex" tabindex="0" role="button" aria-label="View Bionnex details">
             <div class="brand-card__face">
               <img src="images/bionnex.png" alt="Bionnex logo" class="brand-card__logo" loading="lazy">
             </div>
@@ -117,7 +101,7 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="white" tabindex="0">
+          <li class="brand-card" data-bg="white" data-target="brand-signal" tabindex="0" role="button" aria-label="View Signal details">
             <div class="brand-card__face">
               <img src="images/signal.png" alt="Signal logo" class="brand-card__logo" loading="lazy">
             </div>
@@ -133,9 +117,9 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="blue-electric" tabindex="0">
+          <li class="brand-card" data-bg="blue-electric" data-target="brand-clear-men" tabindex="0" role="button" aria-label="View Clear Men details">
             <div class="brand-card__face">
-              <img src="images/clear-men.png" alt="Clear Men logo" class="brand-card__logo" loading="lazy">
+              <img src="images/clear-men.png" alt="Clear Men logo" class="brand-card__logo brand-card__logo--cover" loading="lazy">
             </div>
             <div class="brand-card__info">
               <p class="brand-card__name">Clear Men</p>
@@ -149,7 +133,7 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="white" tabindex="0">
+          <li class="brand-card" data-bg="white" data-target="brand-festival" tabindex="0" role="button" aria-label="View Festival des Sports d'Alger details">
             <div class="brand-card__face">
               <img src="images/festival-des-sports.png" alt="Festival des Sports d'Alger logo" class="brand-card__logo" loading="lazy">
             </div>
@@ -165,9 +149,9 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="blue" tabindex="0">
+          <li class="brand-card" data-bg="blue" data-target="brand-ifri" tabindex="0" role="button" aria-label="View Ifri details">
             <div class="brand-card__face">
-              <img src="images/ifri.png" alt="Ifri logo" class="brand-card__logo" loading="lazy">
+              <img src="images/ifri.png" alt="Ifri logo" class="brand-card__logo brand-card__logo--cover" loading="lazy">
             </div>
             <div class="brand-card__info">
               <p class="brand-card__name">Ifri</p>
@@ -181,9 +165,9 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="green-deep" tabindex="0">
+          <li class="brand-card" data-bg="green-deep" data-target="brand-cheezy" tabindex="0" role="button" aria-label="View Cheezy details">
             <div class="brand-card__face">
-              <img src="images/cheezy.png" alt="Cheezy logo" class="brand-card__logo" loading="lazy">
+              <img src="images/cheezy.png" alt="Cheezy logo" class="brand-card__logo brand-card__logo--cover" loading="lazy">
             </div>
             <div class="brand-card__info">
               <p class="brand-card__name">Cheezy</p>
@@ -197,7 +181,7 @@
             </div>
           </li>
 
-          <li class="brand-card" data-bg="white" tabindex="0">
+          <li class="brand-card" data-bg="white" data-target="brand-lg" tabindex="0" role="button" aria-label="View LG details">
             <div class="brand-card__face">
               <img src="images/lg.png" alt="LG logo" class="brand-card__logo" loading="lazy">
             </div>
@@ -208,6 +192,22 @@
                 <li>100+ content managed</li>
                 <li>High engagement</li>
                 <li>15+ UGC profiles</li>
+                <li>Digital communication</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="brand-card" data-bg="none" data-target="brand-facteur-x" tabindex="0" role="button" aria-label="View Facteur X details">
+            <div class="brand-card__face">
+              <img src="images/facteur-x.png" alt="Facteur X logo" class="brand-card__logo brand-card__logo--contain" loading="lazy">
+            </div>
+            <div class="brand-card__info">
+              <p class="brand-card__name">Facteur X</p>
+              <p class="brand-card__year">2026</p>
+              <ul class="brand-card__kpis">
+                <li>Creative direction</li>
+                <li>Content production</li>
+                <li>Social media</li>
                 <li>Digital communication</li>
               </ul>
             </div>
@@ -233,23 +233,8 @@
 
     <ul class="portfolio-detail__list">
 
-      <li class="pd-row reveal">
+      <li class="pd-row reveal" id="brand-bionnex">
         <span class="pd-row__index">01</span>
-        <span class="pd-row__swatch" data-bg="black" aria-hidden="true"></span>
-        <div class="pd-row__main">
-          <p class="pd-row__name">Facteur X</p>
-          <p class="pd-row__year">2026</p>
-        </div>
-        <ul class="pd-row__kpis">
-          <li>Creative direction</li>
-          <li>Content production</li>
-          <li>Social media</li>
-          <li>Digital communication</li>
-        </ul>
-      </li>
-
-      <li class="pd-row reveal">
-        <span class="pd-row__index">02</span>
         <span class="pd-row__swatch" data-bg="green" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Bionnex</p>
@@ -263,8 +248,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">03</span>
+      <li class="pd-row reveal" id="brand-signal">
+        <span class="pd-row__index">02</span>
         <span class="pd-row__swatch" data-bg="white" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Signal</p>
@@ -278,8 +263,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">04</span>
+      <li class="pd-row reveal" id="brand-clear-men">
+        <span class="pd-row__index">03</span>
         <span class="pd-row__swatch" data-bg="blue-electric" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Clear Men</p>
@@ -293,8 +278,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">05</span>
+      <li class="pd-row reveal" id="brand-festival">
+        <span class="pd-row__index">04</span>
         <span class="pd-row__swatch" data-bg="white" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Festival des Sports d'Alger</p>
@@ -308,8 +293,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">06</span>
+      <li class="pd-row reveal" id="brand-ifri">
+        <span class="pd-row__index">05</span>
         <span class="pd-row__swatch" data-bg="blue" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Ifri</p>
@@ -323,8 +308,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">07</span>
+      <li class="pd-row reveal" id="brand-cheezy">
+        <span class="pd-row__index">06</span>
         <span class="pd-row__swatch" data-bg="green-deep" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">Cheezy</p>
@@ -338,8 +323,8 @@
         </ul>
       </li>
 
-      <li class="pd-row reveal">
-        <span class="pd-row__index">08</span>
+      <li class="pd-row reveal" id="brand-lg">
+        <span class="pd-row__index">07</span>
         <span class="pd-row__swatch" data-bg="white" aria-hidden="true"></span>
         <div class="pd-row__main">
           <p class="pd-row__name">LG</p>
@@ -349,6 +334,21 @@
           <li>100+ content managed</li>
           <li>High engagement</li>
           <li>15+ UGC profiles</li>
+          <li>Digital communication</li>
+        </ul>
+      </li>
+
+      <li class="pd-row reveal" id="brand-facteur-x">
+        <span class="pd-row__index">08</span>
+        <span class="pd-row__swatch" data-bg="black" aria-hidden="true"></span>
+        <div class="pd-row__main">
+          <p class="pd-row__name">Facteur X</p>
+          <p class="pd-row__year">2026</p>
+        </div>
+        <ul class="pd-row__kpis">
+          <li>Creative direction</li>
+          <li>Content production</li>
+          <li>Social media</li>
           <li>Digital communication</li>
         </ul>
       </li>
