@@ -1,602 +1,628 @@
 /* =========================================================
    SABRI MEZAGUER — PORTFOLIO
-   MAIN JAVASCRIPT
+   Main JavaScript
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       BRAND DATA
-    ====================================================== */
+/* =========================================================
+   BRAND DATA
+========================================================= */
 
-    const brands = [
+const brands = [
 
-        {
-            name: "CLEAR MEN",
-            year: "2026 · Present",
-            logo: "assets/images/brands/logo-clear.png",
+    {
+        name: "SIGNAL",
+        year: "2026 · Present",
+        project: "signal",
+        logo: "assets/images/brands/logo-signal.png",
+        color: "signal",
+        kpis: [
+            "13.4K Followers",
+            "Authentic Community",
+            "Engaging Content",
+            "Positive Impact"
+        ]
+    },
 
-            background: "#1557FF",
-            text: "#FFFFFF",
+    {
+        name: "BIONNEX",
+        year: "2026 · Present",
+        project: "bionnex",
+        logo: "assets/images/brands/logo-bionnex.png",
+        color: "bionnex",
+        kpis: [
+            "60+ Content Managed",
+            "Coherent Feed",
+            "Engaged Community",
+            "Strong Brand Image"
+        ]
+    },
 
-            kpis: [
-                "100K+ Followers",
-                "#1 Worldwide Ranking",
-                "Millions of Impressions"
-            ]
-        },
+    {
+        name: "CLEAR MEN",
+        year: "2026 · Present",
+        project: "clear",
+        logo: "assets/images/brands/logo-clear.png",
+        color: "clear",
+        kpis: [
+            "100K+ Followers",
+            "#1 Worldwide Ranking",
+            "Millions of Impressions"
+        ]
+    },
 
-        {
-            name: "SIGNAL",
-            year: "2026 · Present",
-            logo: "assets/images/brands/logo-signal.png",
+    {
+        name: "FESTIVAL DES SPORTS D'ALGER",
+        year: "2026",
+        project: "festival",
+        logo: "assets/images/brands/logo-festival.png",
+        color: "festival",
+        kpis: [
+            "150 Content Pieces",
+            "3 Days",
+            "High Content Volume"
+        ]
+    },
 
-            background: "#FFFFFF",
-            text: "#111111",
+    {
+        name: "CHEEZY",
+        year: "2025 · 3 months",
+        project: "cheezy",
+        logo: "assets/images/brands/logo-cheezy.png",
+        color: "cheezy",
+        kpis: [
+            "+120 Content Pieces",
+            "High Community Engagement",
+            "Strong Brand Loyalty"
+        ]
+    },
 
-            kpis: [
-                "13.4K Followers",
-                "ENGAGING Content",
-                "AUTHENTIC Community"
-            ]
-        },
+    {
+        name: "LG",
+        year: "2025 · 3 months",
+        project: "lg",
+        logo: "assets/images/brands/logo-lg.png",
+        color: "lg",
+        kpis: [
+            "100+ Content Managed",
+            "High Engagement",
+            "15+ UGC Profiles Managed"
+        ]
+    },
 
-        {
-            name: "BIONNEX",
-            year: "2026 · Present",
-            logo: "assets/images/brands/logo-bionnex.png",
+    {
+        name: "IFRI",
+        year: "2024 · 3 months",
+        project: "ifri",
+        logo: "assets/images/brands/logo-ifri.png",
+        color: "ifri",
+        kpis: [
+            "20+ Influencers",
+            "60+ Content Managed",
+            "Millions of Views"
+        ]
+    },
 
-            background: "#CFE8D5",
-            text: "#145C35",
+    {
+        name: "FACTEUR X",
+        year: "Present",
+        project: "facteur-x",
+        logo: "assets/images/brands/logo-facteur-x.png",
+        color: "facteur-x",
+        kpis: [
+            "Brand Strategy",
+            "Digital Communication",
+            "Content Direction"
+        ]
+    }
 
-            kpis: [
-                "60+ Content Managed",
-                "COHERENT Feed",
-                "STRONG Brand Image"
-            ]
-        },
-
-        {
-            name: "FESTIVAL DES SPORTS D'ALGER",
-            year: "2026",
-            logo: "assets/images/brands/logo-festival.png",
-
-            background: "#FFFFFF",
-            text: "#111111",
-
-            kpis: [
-                "150 Content Pieces",
-                "3 Days",
-                "High Content Volume"
-            ]
-        },
-
-        {
-            name: "CHEEZY",
-            year: "2025 · 3 months",
-            logo: "assets/images/brands/logo-cheezy.png",
-
-            background: "#DDEEDB",
-            text: "#174C2C",
-
-            kpis: [
-                "+120 Content Pieces",
-                "HIGH Community Engagement",
-                "STRONG Brand Loyalty"
-            ]
-        },
-
-        {
-            name: "LG",
-            year: "2025 · 3 months",
-            logo: "assets/images/brands/logo-lg.png",
-
-            background: "#FFFFFF",
-            text: "#111111",
-
-            kpis: [
-                "100+ Content Managed",
-                "15+ UGC Profiles",
-                "HIGH Engagement"
-            ]
-        },
-
-        {
-            name: "IFRI",
-            year: "2024 · 3 months",
-            logo: "assets/images/brands/logo-ifri.png",
-
-            background: "#DCE8FF",
-            text: "#123B87",
-
-            kpis: [
-                "20+ Influencers",
-                "60+ Content Managed",
-                "Millions of Views"
-            ]
-        },
-
-        {
-            name: "FACTEUR X",
-            year: "2024",
-            logo: "assets/images/brands/logo-facteur-x.png",
-
-            background: "#000000",
-            text: "#FFFFFF",
-
-            kpis: [
-                "Digital Communication",
-                "Content Management",
-                "Brand Activation"
-            ]
-        }
-
-    ];
+];
 
 
-    /* =====================================================
-       CAROUSEL
-    ====================================================== */
+/* =========================================================
+   DOM
+========================================================= */
 
-    const track = document.querySelector(".brands-track");
+const track =
+    document.querySelector(".brands-track");
 
-    const previousButton =
-        document.querySelector(".carousel-prev");
+const previousButton =
+    document.querySelector(".carousel-prev");
 
-    const nextButton =
-        document.querySelector(".carousel-next");
+const nextButton =
+    document.querySelector(".carousel-next");
 
-    const progressLines =
-        document.querySelectorAll(".progress-line");
+const progressLines =
+    document.querySelectorAll(".progress-line");
 
+const header =
+    document.querySelector(".site-header");
+
+const menuButton =
+    document.querySelector(".menu-toggle");
+
+
+/* =========================================================
+   CAROUSEL STATE
+========================================================= */
+
+let currentIndex = 0;
+
+
+/* =========================================================
+   RESPONSIVE CARD COUNT
+========================================================= */
+
+function getVisibleCards() {
+
+    if (window.innerWidth <= 650) {
+        return 1;
+    }
+
+    if (window.innerWidth <= 1000) {
+        return 2;
+    }
+
+    return 3;
+}
+
+
+/* =========================================================
+   RENDER BRAND CARDS
+========================================================= */
+
+function renderBrands() {
 
     if (!track) {
-        console.warn("Brands carousel not found.");
+        return;
+    }
+
+    track.innerHTML = brands.map((brand) => {
+
+        return `
+            <article
+                class="brand-card brand-${brand.color}"
+                data-project="${brand.project}"
+                tabindex="0"
+                role="button"
+                aria-label="${brand.name}"
+            >
+
+                <div class="brand-logo-wrapper">
+
+                    <img
+                        class="brand-logo"
+                        src="${brand.logo}"
+                        alt="${brand.name}"
+                        loading="lazy"
+                    >
+
+                </div>
+
+
+                <div class="brand-info">
+
+                    <h3 class="brand-name">
+                        ${brand.name}
+                    </h3>
+
+                    <p class="brand-date">
+                        ${brand.year}
+                    </p>
+
+                </div>
+
+
+                <div class="brand-hover">
+
+                    <div class="brand-kpis">
+
+                        ${brand.kpis.map((kpi) => {
+
+                            return `
+                                <span class="brand-kpi">
+                                    ${kpi}
+                                </span>
+                            `;
+
+                        }).join("")}
+
+                    </div>
+
+                </div>
+
+            </article>
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   CAROUSEL UPDATE
+========================================================= */
+
+function updateCarousel() {
+
+    if (!track) {
+        return;
+    }
+
+    const cards =
+        Array.from(
+            track.querySelectorAll(".brand-card")
+        );
+
+    if (!cards.length) {
+        return;
+    }
+
+    const visibleCards =
+        getVisibleCards();
+
+    const maxIndex =
+        Math.max(
+            0,
+            brands.length - visibleCards
+        );
+
+    currentIndex =
+        Math.max(
+            0,
+            Math.min(
+                currentIndex,
+                maxIndex
+            )
+        );
+
+
+    const firstCard =
+        cards[0];
+
+    const cardWidth =
+        firstCard.getBoundingClientRect().width;
+
+
+    const styles =
+        window.getComputedStyle(track);
+
+    const gap =
+        parseFloat(styles.gap) || 0;
+
+
+    const movement =
+        currentIndex *
+        (cardWidth + gap);
+
+
+    track.style.transform =
+        `translate3d(-${movement}px, 0, 0)`;
+
+
+    /* Buttons */
+
+    previousButton.disabled =
+        currentIndex === 0;
+
+    nextButton.disabled =
+        currentIndex === maxIndex;
+
+
+    /* Progress */
+
+    updateProgress(
+        currentIndex,
+        visibleCards,
+        maxIndex
+    );
+
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+function updateProgress(
+    index,
+    visibleCards,
+    maxIndex
+) {
+
+    if (!progressLines.length) {
         return;
     }
 
 
-    /* =====================================================
-       CREATE BRAND CARDS
-    ====================================================== */
-
-    brands.forEach((brand, index) => {
-
-        const card = document.createElement("article");
-
-        card.className = "brand-card";
-
-        card.style.backgroundColor =
-            brand.background;
-
-        card.style.color =
-            brand.text;
+    progressLines.forEach(
+        line => line.classList.remove("active")
+    );
 
 
-        /* -----------------------------------------------
-           LOGO
-        ------------------------------------------------ */
-
-        const logoWrapper =
-            document.createElement("div");
-
-        logoWrapper.className =
-            "brand-logo-wrapper";
+    let progressIndex = 0;
 
 
-        const logo =
-            document.createElement("img");
+    if (index === 0) {
 
-        logo.className =
-            "brand-logo";
+        progressIndex = 0;
 
-        logo.src =
-            brand.logo;
+    } else if (index >= maxIndex) {
 
-        logo.alt =
-            `${brand.name} logo`;
+        progressIndex =
+            progressLines.length - 1;
 
-        logo.loading =
-            "lazy";
+    } else {
 
+        progressIndex = 1;
 
-        logoWrapper.appendChild(logo);
+    }
 
 
-        /* -----------------------------------------------
-           KPI HOVER
-        ------------------------------------------------ */
+    if (progressLines[progressIndex]) {
 
-        const hover =
-            document.createElement("div");
+        progressLines[progressIndex]
+            .classList.add("active");
 
-        hover.className =
-            "brand-hover";
+    }
 
-
-        const kpiContainer =
-            document.createElement("div");
-
-        kpiContainer.className =
-            "brand-kpis";
+}
 
 
-        brand.kpis.forEach(kpi => {
+/* =========================================================
+   NEXT
+========================================================= */
 
-            const item =
-                document.createElement("span");
+function goNext() {
 
-            item.className =
-                "brand-kpi";
+    const visibleCards =
+        getVisibleCards();
 
-            item.textContent =
-                kpi;
-
-            kpiContainer.appendChild(item);
-
-        });
-
-
-        hover.appendChild(kpiContainer);
+    const maxIndex =
+        Math.max(
+            0,
+            brands.length - visibleCards
+        );
 
 
-        /* -----------------------------------------------
-           CARD INFORMATION
-        ------------------------------------------------ */
+    if (currentIndex < maxIndex) {
 
-        const info =
-            document.createElement("div");
+        currentIndex++;
 
-        info.className =
-            "brand-info";
+        updateCarousel();
 
+    }
 
-        const number =
-            document.createElement("span");
-
-        number.className =
-            "brand-number";
-
-        number.textContent =
-            String(index + 1).padStart(2, "0");
+}
 
 
-        const name =
-            document.createElement("h3");
+/* =========================================================
+   PREVIOUS
+========================================================= */
 
-        name.className =
-            "brand-name";
+function goPrevious() {
 
-        name.textContent =
-            brand.name;
+    if (currentIndex > 0) {
 
+        currentIndex--;
 
-        const date =
-            document.createElement("span");
+        updateCarousel();
 
-        date.className =
-            "brand-date";
+    }
 
-        date.textContent =
-            brand.year;
+}
 
 
-        info.appendChild(number);
-        info.appendChild(name);
-        info.appendChild(date);
+/* =========================================================
+   BUTTON EVENTS
+========================================================= */
+
+if (nextButton) {
+
+    nextButton.addEventListener(
+        "click",
+        goNext
+    );
+
+}
+
+if (previousButton) {
+
+    previousButton.addEventListener(
+        "click",
+        goPrevious
+    );
+
+}
 
 
-        /* -----------------------------------------------
-           FINAL CARD
-        ------------------------------------------------ */
+/* =========================================================
+   KEYBOARD CAROUSEL
+========================================================= */
 
-        card.appendChild(logoWrapper);
-        card.appendChild(hover);
-        card.appendChild(info);
+if (track) {
 
-        track.appendChild(card);
+    track.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key !== "Enter" &&
+                event.key !== " "
+            ) {
+                return;
+            }
+
+
+            const card =
+                event.target.closest(".brand-card");
+
+
+            if (!card) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+            card.classList.toggle(
+                "is-focused"
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   TOUCH SWIPE
+========================================================= */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+
+if (track) {
+
+    track.addEventListener(
+        "touchstart",
+        (event) => {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    track.addEventListener(
+        "touchend",
+        (event) => {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+
+            if (difference > 0) {
+
+                goNext();
+
+            } else {
+
+                goPrevious();
+
+            }
+
+        },
+        { passive: true }
+    );
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+if (menuButton && header) {
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                header.classList.toggle(
+                    "menu-open"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU WHEN LINK IS CLICKED
+========================================================= */
+
+document
+    .querySelectorAll(".main-nav a")
+    .forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                if (!header || !menuButton) {
+                    return;
+                }
+
+
+                header.classList.remove(
+                    "menu-open"
+                );
+
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
 
     });
 
 
-    /* =====================================================
-       CAROUSEL STATE
-    ====================================================== */
+/* =========================================================
+   RESIZE
+========================================================= */
 
-    let currentPage = 0;
+let resizeTimer;
 
 
-    function getCardsPerPage() {
+window.addEventListener(
+    "resize",
+    () => {
 
-        if (window.innerWidth <= 700) {
-            return 1;
-        }
+        clearTimeout(resizeTimer);
 
-        if (window.innerWidth <= 1000) {
-            return 2;
-        }
 
-        return 3;
-    }
-
-
-    function getTotalPages() {
-
-        const cardsPerPage =
-            getCardsPerPage();
-
-        return Math.ceil(
-            brands.length / cardsPerPage
-        );
-    }
-
-
-    /* =====================================================
-       MOVE CAROUSEL
-    ====================================================== */
-
-    function updateCarousel() {
-
-        const cards =
-            Array.from(
-                track.querySelectorAll(".brand-card")
-            );
-
-
-        if (!cards.length) {
-            return;
-        }
-
-
-        const cardsPerPage =
-            getCardsPerPage();
-
-
-        const firstCard =
-            cards[0];
-
-
-        const cardWidth =
-            firstCard.getBoundingClientRect().width;
-
-
-        const styles =
-            window.getComputedStyle(track);
-
-
-        const gap =
-            parseFloat(styles.gap) || 0;
-
-
-        const distance =
-            (cardWidth + gap) *
-            cardsPerPage;
-
-
-        track.style.transform =
-            `translateX(-${currentPage * distance}px)`;
-
-
-        updateControls();
-
-    }
-
-
-    /* =====================================================
-       CONTROLS
-    ====================================================== */
-
-    function updateControls() {
-
-        const totalPages =
-            getTotalPages();
-
-
-        if (previousButton) {
-
-            previousButton.disabled =
-                currentPage === 0;
-
-        }
-
-
-        if (nextButton) {
-
-            nextButton.disabled =
-                currentPage >= totalPages - 1;
-
-        }
-
-
-        progressLines.forEach(
-            (line, index) => {
-
-                line.classList.toggle(
-                    "active",
-                    index === currentPage
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       NEXT
-    ====================================================== */
-
-    nextButton?.addEventListener(
-        "click",
-        () => {
-
-            const totalPages =
-                getTotalPages();
-
-
-            if (
-                currentPage <
-                totalPages - 1
-            ) {
-
-                currentPage++;
-
-                updateCarousel();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       PREVIOUS
-    ====================================================== */
-
-    previousButton?.addEventListener(
-        "click",
-        () => {
-
-            if (currentPage > 0) {
-
-                currentPage--;
-
-                updateCarousel();
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       KEYBOARD
-    ====================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                event.key === "ArrowRight" &&
-                document.activeElement.tagName !== "INPUT"
-            ) {
-
-                const totalPages =
-                    getTotalPages();
-
-
-                if (
-                    currentPage <
-                    totalPages - 1
-                ) {
-
-                    currentPage++;
-
-                    updateCarousel();
-
-                }
-
-            }
-
-
-            if (
-                event.key === "ArrowLeft" &&
-                document.activeElement.tagName !== "INPUT"
-            ) {
-
-                if (currentPage > 0) {
-
-                    currentPage--;
-
-                    updateCarousel();
-
-                }
-
-            }
-
-        }
-    );
-
-
-    /* =====================================================
-       RESIZE
-    ====================================================== */
-
-    let resizeTimer;
-
-
-    window.addEventListener(
-        "resize",
-        () => {
-
-            clearTimeout(resizeTimer);
-
-
-            resizeTimer =
-                setTimeout(
-                    () => {
-
-                        const totalPages =
-                            getTotalPages();
-
-
-                        if (
-                            currentPage >=
-                            totalPages
-                        ) {
-
-                            currentPage =
-                                totalPages - 1;
-
-                        }
-
-
-                        updateCarousel();
-
-                    },
-                    150
-                );
-
-        }
-    );
-
-
-    /* =====================================================
-       IMAGE FALLBACK
-    ====================================================== */
-
-    document
-        .querySelectorAll(".brand-logo")
-        .forEach(image => {
-
-            image.addEventListener(
-                "error",
+        resizeTimer =
+            setTimeout(
                 () => {
 
-                    console.error(
-                        `Logo not found: ${image.src}`
-                    );
+                    updateCarousel();
 
-                    image.style.display =
-                        "none";
-
-                }
+                },
+                100
             );
 
-        });
+    }
+);
 
 
-    /* =====================================================
-       INITIALIZE
-    ====================================================== */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-    requestAnimationFrame(
-        () => {
+renderBrands();
 
-            updateCarousel();
-
-        }
-    );
-
-});
+updateCarousel();
