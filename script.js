@@ -47,10 +47,26 @@
   var cards = document.querySelectorAll('.brand-card');
   cards.forEach(function (card) {
     card.addEventListener('click', function (e) {
-      if (window.matchMedia('(hover: none)').matches) {
-        var wasActive = card.classList.contains('is-touch-active');
+      if (window.matchMedia('(hover: none)').matches && !card.classList.contains('is-touch-active')) {
         cards.forEach(function (c) { c.classList.remove('is-touch-active'); });
-        if (!wasActive) card.classList.add('is-touch-active');
+        card.classList.add('is-touch-active');
+        e.preventDefault();
+        return;
+      }
+      var targetId = card.getAttribute('data-target');
+      if (targetId) {
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetEl.classList.add('is-highlighted');
+          setTimeout(function () { targetEl.classList.remove('is-highlighted'); }, 1600);
+        }
+      }
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
       }
     });
   });
