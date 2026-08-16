@@ -1,700 +1,1016 @@
+```javascript
 /* =========================================================
    SABRI MEZAGUER — PORTFOLIO
-   SELECTED WORK CAROUSEL
+   MAIN JAVASCRIPT
 ========================================================= */
 
-const projects = [
-    {
-        name: "SIGNAL",
-        logo: "assets/images/brands/logo-signal.png",
-        year: "2026 · Present",
-        className: "brand-signal",
-        kpis: [
-            "13.4K Followers",
-            "Community Management",
-            "Content Strategy"
-        ]
-    },
+document.addEventListener("DOMContentLoaded", () => {
 
-    {
-        name: "BIONNEX",
-        logo: "assets/images/brands/logo-bionnex.png",
-        year: "2026 · Present",
-        className: "brand-bionnex",
-        kpis: [
-            "60+ Content Managed",
-            "Brand Management",
-            "Social Media Strategy"
-        ]
-    },
+    /* =====================================================
+       01 — BRAND DATA
+       ORDER: MOST RECENT → OLDEST
+    ====================================================== */
 
-    {
-        name: "CLEAR MEN",
-        logo: "assets/images/brands/logo-clear.png",
-        year: "2026",
-        className: "brand-clear",
-        kpis: [
-            "100K+ Followers",
-            "#1 Worldwide Ranking",
-            "Millions of Impressions"
-        ]
-    },
+    const brands = [
 
-    {
-        name: "FESTIVAL DES SPORTS D'ALGER",
-        logo: "assets/images/brands/logo-festival.png",
-        year: "2026",
-        className: "brand-festival",
-        kpis: [
-            "150 Content Pieces",
-            "3 Days",
-            "Event Activation"
-        ]
-    },
+        {
+            name: "FACTEUR X",
+            year: "2026",
+            logo: "images/facteur-x.png",
+            className: "brand-facteur-x",
+            kpis: [
+                "Creative direction",
+                "Content production",
+                "Social media",
+                "Digital communication"
+            ]
+        },
 
-    {
-        name: "CHEEZY",
-        logo: "assets/images/brands/logo-cheezy.png",
-        year: "2025",
-        className: "brand-cheezy",
-        kpis: [
-            "120+ Content Pieces",
-            "Social Media Management",
-            "Campaign Activation"
-        ]
-    },
+        {
+            name: "BIONNEX",
+            year: "2026",
+            logo: "images/bionnex.png",
+            className: "brand-bionnex",
+            kpis: [
+                "60+ content managed",
+                "Dermo-cosmetics",
+                "Content strategy",
+                "Digital activation"
+            ]
+        },
 
-    {
-        name: "LG",
-        logo: "assets/images/brands/logo-lg.png",
-        year: "2025",
-        className: "brand-lg",
-        kpis: [
-            "100+ Content Managed",
-            "High Engagement",
-            "15+ UGC Profiles"
-        ]
-    },
+        {
+            name: "SIGNAL",
+            year: "2026",
+            logo: "images/signal.png",
+            className: "brand-signal",
+            kpis: [
+                "13.4K followers",
+                "Brand management",
+                "Social media",
+                "Content direction"
+            ]
+        },
 
-    {
-        name: "IFRI",
-        logo: "assets/images/brands/logo-ifri.png",
-        year: "2026",
-        className: "brand-ifri",
-        kpis: [
-            "20+ Influencers",
-            "60+ Content Managed",
-            "Millions of Views"
-        ]
-    },
+        {
+            name: "CLEAR MEN",
+            year: "2026",
+            logo: "images/clear-men.png",
+            className: "brand-clear",
+            kpis: [
+                "100K+ followers",
+                "#1 worldwide ranking",
+                "Millions of impressions",
+                "Global campaign"
+            ]
+        },
 
-    {
-        name: "FACTEUR X",
-        logo: "assets/images/brands/logo-facteur-x.png",
-        year: "2025",
-        className: "brand-facteur-x",
-        kpis: [
-            "Brand Strategy",
-            "Digital Communication",
-            "Content Direction"
-        ]
-    }
-];
+        {
+            name: "FESTIVAL DES SPORTS D'ALGER",
+            year: "2026",
+            logo: "images/festival-des-sports.png",
+            className: "brand-festival",
+            kpis: [
+                "150 content pieces",
+                "3 days",
+                "Live coverage",
+                "Digital activation"
+            ]
+        },
 
+        {
+            name: "IFRI",
+            year: "2026",
+            logo: "images/ifri.png",
+            className: "brand-ifri",
+            kpis: [
+                "20+ influencers",
+                "60+ content managed",
+                "Millions of views",
+                "Influencer marketing"
+            ]
+        },
 
-/* =========================================================
-   DOM ELEMENTS
-========================================================= */
+        {
+            name: "CHEEZY",
+            year: "2025",
+            logo: "images/cheezy.png",
+            className: "brand-cheezy",
+            kpis: [
+                "120+ content pieces",
+                "Social media",
+                "UGC management",
+                "Community management"
+            ]
+        },
 
-const track = document.querySelector(".brands-track");
-const carouselWindow = document.querySelector(".carousel-window");
-
-const previousButton = document.querySelector(".carousel-prev");
-const nextButton = document.querySelector(".carousel-next");
-
-const progressLines = [
-    ...document.querySelectorAll(
-        ".carousel-progress .progress-line"
-    )
-];
-
-let currentIndex = 0;
-
-
-/* =========================================================
-   RESPONSIVE SETTINGS
-========================================================= */
-
-function getVisibleCards() {
-
-    if (window.innerWidth <= 700) {
-        return 1;
-    }
-
-    if (window.innerWidth <= 1000) {
-        return 2;
-    }
-
-    return 3;
-}
-
-
-/* =========================================================
-   GAP
-========================================================= */
-
-function getCarouselGap() {
-
-    if (window.innerWidth <= 700) {
-        return 14;
-    }
-
-    return 26;
-}
-
-
-/* =========================================================
-   CARD WIDTH
-========================================================= */
-
-function getCardWidth() {
-
-    if (!carouselWindow) {
-        return 300;
-    }
-
-    const visibleCards = getVisibleCards();
-    const gap = getCarouselGap();
-
-    const containerWidth =
-        carouselWindow.getBoundingClientRect().width;
-
-    const totalGap =
-        gap * (visibleCards - 1);
-
-    return (
-        (containerWidth - totalGap) /
-        visibleCards
-    );
-}
-
-
-/* =========================================================
-   CREATE CARDS
-========================================================= */
-
-function renderBrands() {
-
-    if (!track) {
-        return;
-    }
-
-    track.innerHTML = projects.map(
-        (brand, index) => {
-
-            return `
-                <article
-                    class="brand-card ${brand.className}"
-                    data-index="${index}"
-                    tabindex="0"
-                    role="button"
-                    aria-label="View ${brand.name}"
-                >
-
-                    <!-- LOGO -->
-                    <div class="brand-logo-wrapper">
-
-                        <img
-                            class="brand-logo"
-                            src="${brand.logo}"
-                            alt="${brand.name} logo"
-                        >
-
-                    </div>
-
-
-                    <!-- NAME + YEAR -->
-                    <div class="brand-info">
-
-                        <span class="brand-number">
-                            ${String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <h3 class="brand-name">
-                            ${brand.name}
-                        </h3>
-
-                        <span class="brand-date">
-                            ${brand.year}
-                        </span>
-
-                    </div>
-
-
-                    <!-- KPI -->
-                    <div class="brand-hover">
-
-                        <div class="brand-kpis">
-
-                            ${brand.kpis.map(
-                                kpi => `
-                                    <span class="brand-kpi">
-                                        ${kpi}
-                                    </span>
-                                `
-                            ).join("")}
-
-                        </div>
-
-                    </div>
-
-                </article>
-            `;
+        {
+            name: "LG",
+            year: "2025",
+            logo: "images/lg.png",
+            className: "brand-lg",
+            kpis: [
+                "100+ content managed",
+                "High engagement",
+                "15+ UGC profiles",
+                "Digital communication"
+            ]
         }
-    ).join("");
-}
+
+    ];
 
 
-/* =========================================================
-   UPDATE CARD SIZE
-========================================================= */
+    /* =====================================================
+       02 — CAROUSEL ELEMENTS
+    ====================================================== */
 
-function updateCardSize() {
+    const track =
+        document.querySelector(".brands-track");
 
-    if (!track) {
-        return;
-    }
+    const carouselWindow =
+        document.querySelector(".carousel-window");
 
-    const cardWidth = getCardWidth();
+    const previousButton =
+        document.querySelector(".carousel-prev");
 
-    track.style.setProperty(
-        "--card-width",
-        `${cardWidth}px`
-    );
-}
+    const nextButton =
+        document.querySelector(".carousel-next");
 
-
-/* =========================================================
-   UPDATE CAROUSEL POSITION
-========================================================= */
-
-function updateCarousel() {
-
-    if (!track) {
-        return;
-    }
-
-    const visibleCards = getVisibleCards();
-    const gap = getCarouselGap();
-    const cardWidth = getCardWidth();
-
-    const maxIndex = Math.max(
-        0,
-        projects.length - visibleCards
-    );
+    const progressLines =
+        document.querySelectorAll(".progress-line");
 
 
-    /* Keep index valid */
+    /* =====================================================
+       03 — SAFETY CHECK
+    ====================================================== */
 
-    currentIndex = Math.max(
-        0,
-        Math.min(
-            currentIndex,
-            maxIndex
-        )
-    );
-
-
-    /* Calculate movement */
-
-    const movement =
-        currentIndex *
-        (cardWidth + gap);
-
-
-    track.style.transform =
-        `translate3d(-${movement}px, 0, 0)`;
-
-
-    /* Update buttons */
-
-    if (previousButton) {
-
-        previousButton.disabled =
-            currentIndex === 0;
-    }
-
-
-    if (nextButton) {
-
-        nextButton.disabled =
-            currentIndex >= maxIndex;
-    }
-
-
-    updateProgress();
-}
-
-
-/* =========================================================
-   PROGRESS INDICATORS
-========================================================= */
-
-function updateProgress() {
-
-    if (!progressLines.length) {
-        return;
-    }
-
-    const visibleCards =
-        getVisibleCards();
-
-
-    /*
-       Example desktop:
-
-       8 brands
-       3 visible
-
-       Group 1 → 1 / 2 / 3
-       Group 2 → 4 / 5 / 6
-       Group 3 → 7 / 8
-    */
-
-    const totalGroups =
-        Math.ceil(
-            projects.length /
-            visibleCards
+    if (
+        !track ||
+        !carouselWindow ||
+        !previousButton ||
+        !nextButton
+    ) {
+        console.warn(
+            "Carousel elements could not be found."
         );
 
-
-    const currentGroup =
-        Math.floor(
-            currentIndex /
-            visibleCards
-        );
+        return;
+    }
 
 
-    progressLines.forEach(
-        (line, index) => {
+    /* =====================================================
+       04 — CAROUSEL STATE
+    ====================================================== */
 
-            if (index >= totalGroups) {
+    let currentIndex = 0;
 
-                line.style.display =
+    let cardsPerView = 3;
+
+    let totalPages = 0;
+
+
+    /* =====================================================
+       05 — RESPONSIVE CARDS PER VIEW
+    ====================================================== */
+
+    function getCardsPerView() {
+
+        const width =
+            window.innerWidth;
+
+        if (width <= 600) {
+            return 1;
+        }
+
+        if (width <= 850) {
+            return 2;
+        }
+
+        return 3;
+    }
+
+
+    /* =====================================================
+       06 — TOTAL PAGES
+    ====================================================== */
+
+    function calculatePages() {
+
+        cardsPerView =
+            getCardsPerView();
+
+        totalPages =
+            Math.ceil(
+                brands.length /
+                cardsPerView
+            );
+
+        if (
+            currentIndex >= totalPages
+        ) {
+
+            currentIndex =
+                totalPages - 1;
+
+        }
+
+        if (currentIndex < 0) {
+            currentIndex = 0;
+        }
+    }
+
+
+    /* =====================================================
+       07 — CREATE BRAND CARD
+    ====================================================== */
+
+    function createBrandCard(
+        brand
+    ) {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            `brand-card ${brand.className}`;
+
+
+        /*
+         * Brand background colors
+         */
+
+        switch (brand.name) {
+
+            case "FESTIVAL DES SPORTS D'ALGER":
+                card.style.background = "#ffffff";
+                card.style.color = "#111111";
+                break;
+
+            case "BIONNEX":
+                card.style.background = "#b7cf9c";
+                card.style.color = "#111111";
+                break;
+
+            case "SIGNAL":
+                card.style.background = "#ffffff";
+                card.style.color = "#111111";
+                break;
+
+            case "CLEAR MEN":
+                card.style.background = "#1557c0";
+                card.style.color = "#ffffff";
+                break;
+
+            case "CHEEZY":
+                card.style.background = "#6f9b62";
+                card.style.color = "#111111";
+                break;
+
+            case "LG":
+                card.style.background = "#ffffff";
+                card.style.color = "#111111";
+                break;
+
+            case "IFRI":
+                card.style.background = "#1557c0";
+                card.style.color = "#ffffff";
+                break;
+
+            case "FACTEUR X":
+                card.style.background = "#111111";
+                card.style.color = "#ffffff";
+                break;
+
+            default:
+                card.style.background = "#ffffff";
+                card.style.color = "#111111";
+        }
+
+
+        /* =================================================
+           LOGO
+        ================================================== */
+
+        const logoWrap =
+            document.createElement("div");
+
+        logoWrap.className =
+            "brand-logo-wrap";
+
+
+        const logo =
+            document.createElement("img");
+
+        logo.className =
+            "brand-logo";
+
+        logo.src =
+            brand.logo;
+
+        logo.alt =
+            `${brand.name} logo`;
+
+        logo.loading =
+            "lazy";
+
+
+        /*
+         * If the logo doesn't exist,
+         * don't break the card.
+         */
+
+        logo.addEventListener(
+            "error",
+            () => {
+
+                logo.style.display =
                     "none";
 
-                return;
+                logoWrap.innerHTML =
+                    `<span style="
+                        font-family: var(--display);
+                        font-size: clamp(28px, 4vw, 52px);
+                        font-weight: 800;
+                        letter-spacing: -0.06em;
+                        text-align: center;
+                    ">
+                        ${brand.name}
+                    </span>`;
+
             }
+        );
 
 
-            line.style.display =
-                "block";
+        logoWrap.appendChild(logo);
 
 
-            line.classList.toggle(
-                "active",
-                index === currentGroup
+        /* =================================================
+           HOVER INFORMATION
+        ================================================== */
+
+        const hoverInfo =
+            document.createElement("div");
+
+        hoverInfo.className =
+            "brand-hover-info";
+
+
+        /* Title */
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "brand-title";
+
+
+        const titleName =
+            document.createElement("h3");
+
+        titleName.textContent =
+            brand.name;
+
+
+        const titleYear =
+            document.createElement("span");
+
+        titleYear.textContent =
+            brand.year;
+
+
+        title.appendChild(titleName);
+
+        title.appendChild(titleYear);
+
+
+        /* KPIs */
+
+        const kpis =
+            document.createElement("div");
+
+        kpis.className =
+            "brand-kpis";
+
+
+        brand.kpis.forEach(
+            kpi => {
+
+                const item =
+                    document.createElement("span");
+
+                item.textContent =
+                    kpi;
+
+                kpis.appendChild(item);
+
+            }
+        );
+
+
+        hoverInfo.appendChild(title);
+
+        hoverInfo.appendChild(kpis);
+
+
+        /* =================================================
+           APPEND CARD
+        ================================================== */
+
+        card.appendChild(logoWrap);
+
+        card.appendChild(hoverInfo);
+
+
+        return card;
+    }
+
+
+    /* =====================================================
+       08 — RENDER ALL BRANDS
+    ====================================================== */
+
+    function renderBrands() {
+
+        track.innerHTML = "";
+
+
+        brands.forEach(
+            brand => {
+
+                const card =
+                    createBrandCard(
+                        brand
+                    );
+
+                track.appendChild(card);
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       09 — UPDATE CARD WIDTH
+    ====================================================== */
+
+    function updateCardWidths() {
+
+        const cards =
+            track.querySelectorAll(
+                ".brand-card"
             );
+
+
+        if (!cards.length) {
+            return;
         }
-    );
-}
 
 
-/* =========================================================
-   NEXT GROUP
-========================================================= */
-
-function goNext() {
-
-    const visibleCards =
-        getVisibleCards();
+        const gap = 24;
 
 
-    const maxIndex =
-        Math.max(
-            0,
-            projects.length -
-            visibleCards
+        let width;
+
+
+        if (cardsPerView === 1) {
+
+            width =
+                carouselWindow.clientWidth;
+
+        }
+
+        else {
+
+            width =
+                (
+                    carouselWindow.clientWidth
+                    -
+                    gap *
+                    (cardsPerView - 1)
+                )
+                /
+                cardsPerView;
+
+        }
+
+
+        cards.forEach(
+            card => {
+
+                card.style.flexBasis =
+                    `${width}px`;
+
+            }
         );
 
-
-    if (
-        currentIndex >=
-        maxIndex
-    ) {
-        return;
     }
 
 
-    /*
-       Move exactly one group.
+    /* =====================================================
+       10 — MOVE CAROUSEL
+    ====================================================== */
 
-       Desktop:
-       3 → 3 → remaining
-
-       Tablet:
-       2 → 2 → remaining
-
-       Mobile:
-       1 → 1 → 1...
-    */
-
-    currentIndex =
-        Math.min(
-            currentIndex +
-            visibleCards,
-            maxIndex
-        );
-
-
-    updateCarousel();
-}
-
-
-/* =========================================================
-   PREVIOUS GROUP
-========================================================= */
-
-function goPrevious() {
-
-    const visibleCards =
-        getVisibleCards();
-
-
-    if (
-        currentIndex <= 0
+    function updateCarousel(
+        direction = null
     ) {
-        return;
+
+        const cards =
+            track.querySelectorAll(
+                ".brand-card"
+            );
+
+
+        if (!cards.length) {
+            return;
+        }
+
+
+        calculatePages();
+
+
+        /*
+         * Each page moves by exactly
+         * the number of visible cards.
+         */
+
+        const firstCard =
+            cards[0];
+
+
+        const computedStyle =
+            window.getComputedStyle(track);
+
+
+        const gap =
+            parseFloat(
+                computedStyle.columnGap ||
+                computedStyle.gap ||
+                "24"
+            );
+
+
+        const cardWidth =
+            firstCard.getBoundingClientRect().width;
+
+
+        const moveAmount =
+            (
+                cardWidth + gap
+            )
+            *
+            cardsPerView
+            *
+            currentIndex;
+
+
+        /*
+         * On the final page we calculate
+         * the exact available movement
+         * so we don't create empty space.
+         */
+
+        const maxTranslate =
+            track.scrollWidth -
+            carouselWindow.clientWidth;
+
+
+        let translate =
+            Math.min(
+                moveAmount,
+                maxTranslate
+            );
+
+
+        if (translate < 0) {
+            translate = 0;
+        }
+
+
+        /*
+         * Animation direction classes
+         */
+
+        if (direction) {
+
+            track.classList.remove(
+                "carousel-enter-next",
+                "carousel-enter-prev"
+            );
+
+
+            /*
+             * Force reflow so animation
+             * can restart correctly.
+             */
+
+            void track.offsetWidth;
+
+
+            track.classList.add(
+                direction === "next"
+                    ? "carousel-enter-next"
+                    : "carousel-enter-prev"
+            );
+
+        }
+
+
+        track.style.transform =
+            `translate3d(
+                -${translate}px,
+                0,
+                0
+            )`;
+
+
+        updateProgress();
+
+
+        updateButtons();
+
     }
 
 
-    currentIndex =
-        Math.max(
-            currentIndex -
-            visibleCards,
+    /* =====================================================
+       11 — PROGRESS INDICATOR
+    ====================================================== */
+
+    function updateProgress() {
+
+        if (!progressLines.length) {
+            return;
+        }
+
+
+        progressLines.forEach(
+            (line, index) => {
+
+                line.classList.toggle(
+                    "active",
+                    index === currentIndex
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       12 — BUTTON STATES
+    ====================================================== */
+
+    function updateButtons() {
+
+        previousButton.disabled =
+            currentIndex <= 0;
+
+
+        nextButton.disabled =
+            currentIndex >=
+            totalPages - 1;
+
+
+        previousButton.style.opacity =
+            previousButton.disabled
+                ? "0.35"
+                : "1";
+
+
+        nextButton.style.opacity =
+            nextButton.disabled
+                ? "0.35"
+                : "1";
+
+
+        previousButton.style.pointerEvents =
+            previousButton.disabled
+                ? "none"
+                : "auto";
+
+
+        nextButton.style.pointerEvents =
+            nextButton.disabled
+                ? "none"
+                : "auto";
+
+    }
+
+
+    /* =====================================================
+       13 — NEXT
+    ====================================================== */
+
+    function goNext() {
+
+        calculatePages();
+
+
+        if (
+            currentIndex <
+            totalPages - 1
+        ) {
+
+            currentIndex++;
+
+            updateCarousel("next");
+
+        }
+
+    }
+
+
+    /* =====================================================
+       14 — PREVIOUS
+    ====================================================== */
+
+    function goPrevious() {
+
+        calculatePages();
+
+
+        if (
+            currentIndex >
             0
-        );
+        ) {
+
+            currentIndex--;
+
+            updateCarousel("prev");
+
+        }
+
+    }
 
 
-    updateCarousel();
-}
-
-
-/* =========================================================
-   BUTTON EVENTS
-========================================================= */
-
-if (previousButton) {
-
-    previousButton.addEventListener(
-        "click",
-        goPrevious
-    );
-}
-
-
-if (nextButton) {
+    /* =====================================================
+       15 — BUTTON EVENTS
+    ====================================================== */
 
     nextButton.addEventListener(
         "click",
         goNext
     );
-}
 
 
-/* =========================================================
-   KEYBOARD NAVIGATION
-========================================================= */
+    previousButton.addEventListener(
+        "click",
+        goPrevious
+    );
 
-document.addEventListener(
-    "keydown",
-    event => {
 
-        /*
-           Do not interfere with typing
-           in inputs or textareas.
-        */
+    /* =====================================================
+       16 — KEYBOARD NAVIGATION
+    ====================================================== */
 
-        const activeElement =
-            document.activeElement;
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            /*
+             * Don't hijack keyboard navigation
+             * while typing in inputs.
+             */
+
+            const tag =
+                event.target.tagName;
+
+            if (
+                tag === "INPUT" ||
+                tag === "TEXTAREA" ||
+                tag === "SELECT"
+            ) {
+                return;
+            }
+
+
+            if (
+                event.key === "ArrowRight"
+            ) {
+
+                goNext();
+
+            }
+
+
+            if (
+                event.key === "ArrowLeft"
+            ) {
+
+                goPrevious();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       17 — TOUCH / SWIPE
+    ====================================================== */
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+
+    carouselWindow.addEventListener(
+        "touchstart",
+        event => {
+
+            touchStartX =
+                event.changedTouches[0].screenX;
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    carouselWindow.addEventListener(
+        "touchend",
+        event => {
+
+            touchEndX =
+                event.changedTouches[0].screenX;
+
+            handleSwipe();
+
+        },
+        {
+            passive: true
+        }
+    );
+
+
+    function handleSwipe() {
+
+        const difference =
+            touchStartX -
+            touchEndX;
+
+
+        const threshold = 50;
+
 
         if (
-            activeElement &&
-            (
-                activeElement.tagName === "INPUT" ||
-                activeElement.tagName === "TEXTAREA"
-            )
+            Math.abs(difference) <
+            threshold
         ) {
             return;
         }
 
 
-        if (
-            event.key === "ArrowRight"
-        ) {
+        if (difference > 0) {
 
             goNext();
+
         }
 
-
-        if (
-            event.key === "ArrowLeft"
-        ) {
+        else {
 
             goPrevious();
+
         }
+
     }
-);
 
 
-/* =========================================================
-   CARD KEYBOARD ACCESSIBILITY
-========================================================= */
+    /* =====================================================
+       18 — RESIZE
+    ====================================================== */
 
-if (track) {
+    let resizeTimer;
 
-    track.addEventListener(
-        "keydown",
-        event => {
 
-            const card =
-                event.target.closest(
-                    ".brand-card"
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    () => {
+
+                        calculatePages();
+
+                        updateCardWidths();
+
+                        updateCarousel();
+
+                    },
+                    150
                 );
 
-
-            if (!card) {
-                return;
-            }
-
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                card.classList.toggle(
-                    "is-focused"
-                );
-            }
         }
     );
-}
 
 
-/* =========================================================
-   RESIZE
-========================================================= */
+    /* =====================================================
+       19 — SMOOTH SCROLL
+    ====================================================== */
 
-let resizeTimer = null;
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(
+            link => {
 
-window.addEventListener(
-    "resize",
-    () => {
+                link.addEventListener(
+                    "click",
+                    event => {
 
-        clearTimeout(
-            resizeTimer
+                        const targetId =
+                            link
+                                .getAttribute("href");
+
+
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+                            return;
+                        }
+
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+
+                        if (!target) {
+                            return;
+                        }
+
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView(
+                            {
+                                behavior: "smooth",
+                                block: "start"
+                            }
+                        );
+
+                    }
+                );
+
+            }
         );
 
 
-        resizeTimer =
-            setTimeout(
-                () => {
-
-                    /*
-                       Recalculate the carousel
-                       after the viewport changes.
-                    */
-
-                    updateCardSize();
-
-
-                    const visibleCards =
-                        getVisibleCards();
-
-
-                    const maxIndex =
-                        Math.max(
-                            0,
-                            projects.length -
-                            visibleCards
-                        );
-
-
-                    currentIndex =
-                        Math.min(
-                            currentIndex,
-                            maxIndex
-                        );
-
-
-                    updateCarousel();
-
-                },
-                100
-            );
-    }
-);
-
-
-/* =========================================================
-   IMAGE ERROR HANDLING
-========================================================= */
-
-if (track) {
-
-    track.addEventListener(
-        "error",
-        event => {
-
-            if (
-                event.target.tagName !== "IMG"
-            ) {
-                return;
-            }
-
-
-            console.warn(
-                "Portfolio image not found:",
-                event.target.src
-            );
-        },
-        true
-    );
-}
-
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
-function initCarousel() {
+    /* =====================================================
+       20 — INITIALIZE
+    ====================================================== */
 
     renderBrands();
 
-    updateCardSize();
+    calculatePages();
+
+    updateCardWidths();
 
     updateCarousel();
-}
 
 
-/* =========================================================
-   START
-========================================================= */
+    /* =====================================================
+       21 — LOAD SAFETY
+    ====================================================== */
 
-if (
-    document.readyState ===
-    "loading"
-) {
+    window.addEventListener(
+        "load",
+        () => {
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        initCarousel
+            calculatePages();
+
+            updateCardWidths();
+
+            updateCarousel();
+
+        }
     );
 
-} else {
 
-    initCarousel();
-}
+    /* =====================================================
+       22 — DEBUG
+       Useful during GitHub Pages development.
+    ====================================================== */
+
+    console.log(
+        "Sabri Mezaguer portfolio loaded successfully."
+    );
+
+    console.log(
+        `${brands.length} brands loaded.`
+    );
+
+});
+```
